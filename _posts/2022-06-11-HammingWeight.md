@@ -10,7 +10,7 @@ tags : [Algorithm]
 
 길이가 모두 0인 Hamming Distance 와 동일
 
-```C
+```c
 /* Divide and Conquer */
  int OneBitCnt(int data){
    data = (data & 0x55555555) + ((data >> 1) & 0x55555555); //인접한 1비트의 분할정복
