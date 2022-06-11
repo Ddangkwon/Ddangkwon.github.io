@@ -1,3 +1,10 @@
+---
+layout : post
+title : 해밍 가중치(Hamming Weight)
+comments : true
+categories : Algorithm
+tags : Algorithm
+---
 # 해밍 가중치(Hamming Weight)
 
 길이가 모두 0인 Hamming Distance 와 동일
@@ -12,7 +19,7 @@
    data = (data & 0x0000ffff) + ((data >> 16) & 0x0000ffff);  //인접한 16비트의 분할정복
    return data;
 }
-```C
+```
 
 1. 모든 odd bit의 1값 탐색
 (data & 0x55555555) 
