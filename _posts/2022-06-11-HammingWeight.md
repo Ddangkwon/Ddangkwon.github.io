@@ -2,8 +2,9 @@
 layout : post
 title : 해밍 가중치(Hamming Weight)
 comments : true
-categories : Algorithm
-tags : Algorithm
+categories : 
+- Algorithm
+tags : [Algorithm]
 ---
 # 해밍 가중치(Hamming Weight)
 
