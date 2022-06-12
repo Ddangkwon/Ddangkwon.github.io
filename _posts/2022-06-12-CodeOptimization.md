@@ -18,10 +18,9 @@ tags : [Embedded Engineering]
 최선의 알고리즘, 최적의 코드를 찾아라
 하드웨어 특성(프로세서), 개발 툴 등을 잘 이해하고 활용하라
 
-```
 헤더 인클루드 중복성 제거
 
-```C
+```c
 #ifndef FUNC_H// 정의가 되어있지 않을 경우 인클루드(딱 한번만 인클루드 하게 됨)
 #define FUNC_H
 
@@ -29,7 +28,7 @@ tags : [Embedded Engineering]
 
 #endif FUNC_H
 ```
-```
+
 
 # C에서 최적화를 위한 표현법
 

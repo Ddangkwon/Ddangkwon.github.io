@@ -16,7 +16,7 @@ lang: ko-KR
 prefer_datetime_locale:
 
 # Change to your timezone › http://www.timezoneconverter.com/cgi-bin/findzone/findzone
-timezone: Asia/Shanghai
+timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
@@ -50,7 +50,7 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification:               # fill in to your verification string
+google_site_verification: <meta name="google-site-verification" content="k9n3TqutGkNvqf7uv9HP04BF1yRBxsowePxu32o6gBk" /> # fill in to your verification string
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
