@@ -31,7 +31,95 @@ typedef enum state_e{
 ```
 ### 1.3 조건식과 계산식
 
+### 1.3.1 설명 전용 변수 사용
 
+if-statement와 같은 조건 문에 복잡한 조건이 사용되는 경우 설명 전용 변수를 사용한다.
+
+```c
+const bool isZero = (y != 0);
+const bool isStateFail = (state == STATE_FAIL);
+const bool Judge = (!isZero && !isStateFail);
+
+if(Judge)
+{
+
+}
+```
+
+### 1.3.2 조건식 함수화
+
+```c
+bool isZero()
+ {
+    return y != 0;
+ }
+
+ bool isStateFail()
+ {
+    return state == STATE_FAIL;
+ }
+ bool Judge()
+ {
+    return (!isZero && !isStateFail);
+ }
+```
+
+### 1.3.3 설명 전용 변수 사용
+
+설명 전용 변수를 사용하여 가독성을 높인다.
+
+```c
+
+const int maxSpeed = FACTOR * 2.0U * MAX_WHEEL_SPEED;
+const int minSpeed = FACTOR * 2.0U * MIN_WHEEL_SPEED;
+if(speed > maxSpeed)
+{
+
+}
+else if(speed <= maxSpeed && speed > minSpeed)
+{
+
+}
+else
+{
+
+}
+```
+
+### 1.3.4 계산식 함수화
+
+계산식을 함수화 하여 그냥 봐도 무엇을 하는 코드인지 알게한다.
+```c
+int FindMaxSpeed(int x)
+{
+    return FACTOR * x * MAX_WHEEL_SPEED;
+}
+
+int FindMinSpeed(int x)
+{
+    return FACTOR * x * MIN_WHEEL_SPEED;
+    
+}
+void speedfunc()
+{
+    const int maxSpeed = FindMaxSpeed();
+    const int minSpeed = FindMinSpeed();
+
+    if(speed > maxSpeed)
+    {
+
+    }
+    else if(speed <= maxSpeed && speed > minSpeed)
+    {
+
+    }
+    else
+    {
+
+    }
+}
+
+```
 ## 2장. 간단할 설계를 위한 원칙과 패턴
 
 ## 3장. 소스 코드 품질 측정
