@@ -1,4 +1,4 @@
-.---
+---
 layout : post
 title : 책 리뷰(코딩의 기술)
 comments : true
