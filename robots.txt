@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://jhttps://zerofist.github.io/sitemap.xml
+Sitemap: https://zerofist.github.io/sitemap.xml
