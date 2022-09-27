@@ -27,3 +27,14 @@ import os
 os.system("pip install numpy")
 
 ```
+
+
+## 파이썬을 파이썬 답게
+
+
+### 2차원 배열 각 행 길이 반환
+
+```Python
+def solution(mylist):
+    return list(map(len, mylist))
+```
