@@ -1,12 +1,12 @@
 ---
 layout : post
-title : Python Tip
+title : python Tip
 comments : true
 categories : 
-- Python
-tags : [Python]
+- python
+tags : [python]
 ---
-# Python Tip
+# python Tip
 
 
 ## Pycharm 에서 코드 내 pip install 명령어 사용하기 
@@ -35,7 +35,7 @@ os.system("pip install numpy")
 
 ### 2차원 배열 각 행 길이 반환
 
-```Python
+```python
 def solution(mylist):
     return list(map(len, mylist))
 ```
@@ -45,7 +45,7 @@ def solution(mylist):
 
 파이썬의 divmod와 unpacking을 이용하여 몫과 나머지를 다음과 같이 구할 수 있다.
 
-```Python
+```python
 a = 9
 b = 2
 print(*divmod(a, b))
@@ -56,7 +56,7 @@ n진법으로 표기된 string을 10진법 숫자로 변환하기 - int 함수
 파이썬의 경우 int 함수에서 다음과 같이 진법 변환을 지원한다.
  int(x, base=10)
  
-```Python
+```python
 num = '3212'
 base = 5
 answer = int(num, base)
@@ -66,7 +66,7 @@ answer = int(num, base)
 
 문자열 좌측, 중앙, 우측 정렬에 관련된 함수는 다음과 같다.
 
-```Python
+```python
 s = '가나다라'
 n = 7
 
@@ -78,7 +78,7 @@ s.rjust(n) # 우측 정렬
 
 파이썬에는 알파벳을 출력하는 별도의 함수가 있다.
 
-```Python
+```python
 
 import string 
 
@@ -94,14 +94,14 @@ string.digits # 숫자 0123456789
 원래대로라면 깊은 복사 수행 후 sort 함수 사용
 
 
-```Python
+```python
 list1 = [3, 2, 5, 1]
 list2 = copy.deepcopy(list1)
 list2.sort()
 ```
 
 다음과 같이 sorted 함수를 사용하면 해당 문제를 해결할 수 있음
-```Python
+```python
 list1 = [3, 2, 5, 1]
 list2 = sorted(list1)
 ```
@@ -113,7 +113,7 @@ zip 함수를 이용한 2차원 배열 뒤집기를 예로 들면,
 
 기존 스타일의 2차원 배열 뒤집기의 경우 다음과 같이 표현될 수 있다.
 
-```Python
+```python
 mylist = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 new_list = [[], [], []]
 
@@ -124,7 +124,7 @@ for i in range(len(mylist)):
 ```
 
 다음과 같이 unpacking과 zip 함수를 사용하여 구현할 수 있다.
-```Python
+```python
 mylist = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 new_list = list(map(list, zip(*mylist)))
 ```
@@ -141,7 +141,7 @@ new_list = list(map(list, zip(*mylist)))
 
 packing : 인자로 받은 여러개의 값을 하나의 객체로 합쳐서 받을 수 있도록 한다.
 
-```Python
+```python
 def sum_func(*num):
     result = 0
     for num in num:
@@ -156,7 +156,7 @@ unpacking : 여러개의 객체를 포함하고 있는 하나의 객체를 풀�
 
 packing의 경우 매개변수에 *를 붙이고 unpacking의 경우 인자 앞에 붙여서 사용한다.
 
-```Python
+```python
 def sum_func(x, y, z):
     return x + y + z
 
@@ -171,7 +171,7 @@ zip 함수 설명
 
 사용 예 #1 - 여러 개의 Iterable 동시에 순회할 때 사용
 
-```Python
+```python
 list1 = [1, 2, 3, 4]
 list2 = [100, 120, 30, 300]
 list3 = [392, 2, 33, 1]
@@ -183,7 +183,7 @@ for number1, number2, number3 in zip(list1, list2, list3):
 사용 예 #2 - Key 리스트와 Value 리스트로 딕셔너리 생성하기
 파이썬의 zip 함수와 dict 생성자를 이용하면 코드 단 한 줄로, 두 리스트를 합쳐 딕셔너리로 만들 수 있습니다.
 
-```Python
+```python
 animals = ['cat', 'dog', 'lion']
 sounds = ['meow', 'woof', 'roar']
 answer = dict(zip(animals, sounds)) # {'cat': 'meow', 'dog': 'woof', 'lion': 'roar'}
