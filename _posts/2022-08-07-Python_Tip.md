@@ -165,6 +165,8 @@ numbers = [1, 2, 3]
 print(sum(*numbers)) # 출력 : 6
 ```
 
+
+### zip 함수 세부 활용법
 zip 함수 설명
 => zip(*iterables)는 각 iterables 의 요소들을 모으는 이터레이터를 만듭니다.
 튜플의 이터레이터를 돌려주는데, i 번째 튜플은 각 인자로 전달된 시퀀스나 이터러블의 i 번째 요소를 포함합니다.
@@ -187,4 +189,41 @@ for number1, number2, number3 in zip(list1, list2, list3):
 animals = ['cat', 'dog', 'lion']
 sounds = ['meow', 'woof', 'roar']
 answer = dict(zip(animals, sounds)) # {'cat': 'meow', 'dog': 'woof', 'lion': 'roar'}
+```
+
+index를 활용하여 원소에 접근하는 방법 대신 zip 함수 활용 케이스
+
+인접한 list 내부 변수끼리의 차 계산
+
+```python
+def solution(mylist):
+    answer = []
+    for i in range(len(mylist)-1):
+        answer.append(abs(mylist[i] - mylist[i+1]))
+    return answer
+
+if __name__ == '__main__':
+    mylist = [83, 48, 13, 4, 71, 11]    
+    print(solution(mylist))
+```
+
+
+```python
+def solution(mylist):
+    answer = []
+    for number1, number2 in zip(mylist, mylist[1:]):
+        answer.append(abs(number1 - number2))
+    return answer
+
+if __name__ == '__main__':
+    mylist = [83, 48, 13, 4, 71, 11]    
+    print(solution(mylist))
+```
+
+
+### 모든 멤버의 type 변환하기 - map
+
+```python
+list1 = ['1', '100', '33']
+list2 = list(map(int, list1))
 ```
