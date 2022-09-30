@@ -227,3 +227,84 @@ if __name__ == '__main__':
 list1 = ['1', '100', '33']
 list2 = list(map(int, list1))
 ```
+
+
+### sequence 멤버를 하나로 이어붙이기 - join
+
+join 함수를 사용하여 문자열을 concat 할 수 있음
+```python
+my_list = ['1', '100', '33']
+answer = ''
+for value in my_list:
+    answer += value
+
+```
+
+```python
+my_list = ['1', '100', '33']
+answer = ''.join(my_list) # '110033'
+
+```
+
+### sequence type의 * 연산
+
+파이썬에서는 * 연산자를 통해 반복 리스트나 문자열을 만들 수 있다.
+
+```python
+n = 3
+answer = 'abc' * n # 'abcabcabc'
+```
+
+```python
+n = 3
+answer= [123, 456] * n # [123, 456, 123, 456, 123, 456]
+
+``` 
+
+
+### 곱집합(Cartesian product) 구하기 - product
+
+파이썬에서는 itertools.product를 이용하면, for 문을 사용하지 않고도 곱집합을 구할 수 있다.
+
+```python
+import itertools
+
+iterable1 = 'ABCD'
+iterable2 = 'xy'
+iterable3 = '1234'
+
+print(list(itertools.product(iterable1, iterable2, iterable3)))
+```
+
+### 2차원 리스트를 1차원 리스트로 만들기(Flatten) - from_iterable
+
+```python
+my_list = [[1, 2], [3, 4], [5, 6]]
+
+# 방법 1 - sum 함수
+answer = sum(my_list, [])
+
+# 방법 2 - itertools.chain
+import itertools
+list(itertools.chain.from_iterable(my_list))
+
+# 방법 3 - itertools와 unpacking
+import itertools
+list(itertools.chain(*my_list))
+
+# 방법 4 - list comprehension 이용
+[element for array in my_list for element in array]
+
+# 방법 5 - reduce 함수 이용 1
+from functools import reduce
+list(reduce(lambda x, y: x+y, my_list))
+
+# 방법 6 - reduce 함수 이용 2
+from functools import reduce
+import operator
+list(reduce(operator.add, my_list))
+
+# 방법 7 - numpy 라이브러리의 flatten 이용
+import numpy as np
+np.array(my_list).flatten().tolist()
+```
