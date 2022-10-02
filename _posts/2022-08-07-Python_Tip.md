@@ -308,3 +308,172 @@ list(reduce(operator.add, my_list))
 import numpy as np
 np.array(my_list).flatten().tolist()
 ```
+
+
+### 순열과 조합 - combinations, permutations
+
+순열과 조합에 관한 파이썬에서의 함수 설명
+
+```python
+import itertools
+
+pool = ['A', 'B', 'C']
+print(list(map(''.join, itertools.permutations(pool)))) # 3개의 원소로 순열 만들기
+print(list(map(''.join, itertools.permutations(pool, 2)))) # 2개의 원소로 순열 만들기
+
+print(list(map(''.join, itertools.combinations(pool)))) # 3개의 원소로 순열 만들기
+print(list(map(''.join, itertools.combinations(pool, 2)))) # 2개의 원소로 순열 만들기
+```
+
+### 가장 많이 문자, 숫자 찾기 - Counter
+
+파이썬의 collections.Counter 클래스를 사용하면 해당 문제를 간단하게 해결할 수 있음
+
+
+```python
+import collections
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 7, 9, 1, 2, 3, 3, 5, 2, 6, 8, 9, 0, 1, 1, 4, 7, 0]
+answer = collections.Counter(my_list)
+
+print(answer[1]) # = 4
+print(answer[3])  # = 3
+print(answer[100]) # = 0
+
+```
+
+
+### flag 대신 for-else 사용하기
+
+flag 옵션을 사용해서 문제를 해결하는 경우 
+
+```python
+import math
+
+if __name__ == '__main__':
+    numbers = [int(input()) for _ in range(5)]
+    multiplied = 1
+    flag = True
+    for number in numbers:
+        multiplied *= number
+        if math.sqrt(multiplied) == int(math.sqrt(multiplied)):
+            flag = False
+            print('found')
+            break
+
+    if flag:
+        print('not found')
+```
+
+
+```python
+import math
+
+if __name__ == '__main__':
+    numbers = [int(input()) for _ in range(5)]
+    multiplied = 1
+    for number in numbers:
+        multiplied *= number
+        if math.sqrt(multiplied) == int(math.sqrt(multiplied)):
+            print('found')
+            break
+    else:
+        print('not found') # for 구문이 break 등으로 중간에 빠져나오지 않고 끝가지 실행 됐을 때 else 문 실행
+
+```
+
+### 두 변수의 값 바꾸기 - swap
+
+파이썬의 경우 다른 언어와 다르게 temp 라는 swap을 위한 임시 변수 없이 바로 두 변수의 값을 바꿀 수 있음
+
+```python
+a = 3
+b = 'abc'
+
+temp = a
+a = b
+b = temp
+```
+
+```python
+a = 3
+b = 'abc'
+
+a, b = b, a # 다음과 같이 값 스왑 가능
+```
+
+### 이진 탐색하기 - binary search
+
+파이썬에는 이진 탐색 알고리즘 모듈이 있어 해당 메소드를 사용하여 이진 탐색을 수행할 수 있다.
+
+```python
+import bisect
+mylist = [1, 2, 3, 7, 9, 11, 33]
+print(bisect.bisect(mylist, 3)) # 3이라는 값의 위치를 찾아 반환
+
+```
+
+### 클래스 인스턴스 출력하기 - class의 자동 string casting
+
+기존처럼 클래스 인스턴스를 출력(print)하기 위해서 별도의 print 메서드를 선언하고 사용해야 한다.
+
+
+```python
+
+class Coord(object):
+    def __init__(self, x, y):
+        self.x, self.y = x, y
+
+point = Coord(1, 2)
+print( '({}, {})'.format(point.x, point.y) ) 
+
+# 또는
+def print_coord(coord):
+    print( '({}, {})'.format(coord.x, coord.y) )
+print_coord(point)
+
+```
+
+```python
+class Coord(object):
+    def __init__ (self, x, y):
+        self.x, self.y = x, y
+    def __str__ (self):
+        return '({}, {})'.format(self.x, self.y)
+
+point = Coord(1, 2) 
+print(point)# __str__ 호출
+```
+
+
+### 가장 큰 수, inf
+MAX 값 등을 할당 할때 사용
+
+
+```python
+min_val = float('inf')
+max_val = float('-inf')
+```
+
+### with-as 구문을 이용한 파일 입출력
+
+기존 방식은 EOF를 만날 때까지, 파일 읽기를 라인 바이로 반복한다.
+
+```python
+f = open('myfile.txt', 'r')
+while True:
+    line = f.readline()
+    if not line: 
+        break
+    raw = line.split()
+    print(raw)
+f.close()
+```
+파이썬에서는 with-as 구문을 이용하여 코드를 간결하게 만들 수 있다.
+
+별도의 file close 함수를 호출 할 필요가 없고, readlines가 EOF 까지 읽으므로, EOF 체크가 불필요하다.
+```python
+with open('myfile.txt') as file:
+    for line in file.readlines():
+        print(line.strip().split('\t'))
+
+```
