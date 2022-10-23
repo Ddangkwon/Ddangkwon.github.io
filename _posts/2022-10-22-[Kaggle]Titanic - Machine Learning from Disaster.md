@@ -8,7 +8,7 @@ tags : [python]
 ---
 # Titanic - Machine Learning from Disaster
 
-![titanic.PNG](C:/titanic.png)
+![titanic.PNG](./img/titanic.png)
 
 ```python
 import pandas as pd
