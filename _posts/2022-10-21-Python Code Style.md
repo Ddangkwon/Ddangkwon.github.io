@@ -162,3 +162,119 @@ def calc(a, b):
 	
 	return r1
 ```
+
+## 클로저
+이렇게 함수를 둘러싼 환경(지역 변수, 코드 등)을 계속 유지하다가, 함수를 호출할 때 다시 꺼내서 사용하는 함수를 클로저(closure)라고 한다.
+```python
+
+def outer(a, b):
+
+	def inner():
+		return a+b
+	return inner
+
+	
+f = outer(1, 2)
+r = f() # 3
+
+```
+
+
+```python
+
+def circle_area(pi):
+	
+	def area(rad):
+		return pi * rad * rad
+	return area
+
+# outer 함수 호출
+ca1 = circle_area(3.14)
+ca2 = circle_area(3.141414)
+
+# inner 함수 호출
+print(ca1(10))
+print(ca2(10))
+```
+
+## 데코레이터
+
+
+## 람다
+
+람다 함수의 경우 ㅎ함수를 딱 한줄로 표현하게 해주는 형식을 말한다.
+람다 함수의 표현 형태는 다음과 같다
+
+lambda 매개변수 : 표현식 
+```python
+date = ['MON', 'TUE', 'WED', 'THU', 'FRI']
+
+def change_words(words, func):
+	for word in words:
+		print(funct(word))
+
+def sample_func(word):
+	return word.capitalize() #  문자열에서 첫문자를 대문자로 만들어 리턴
+
+sample_func2 = lambda word : word.capitalize()
+change_words(date, sample_func) 
+change_words(date, lambda word:word.capitalize()) 
+
+```
+
+
+## 제네레이터
+
+```python
+
+def test_generator():
+     print('yield 1 전')
+     yield 1
+     print('yield 1과 2사이')
+     yield 2
+     print('yield 2와 3사이')
+     yield 3
+     print('yield 3 후')
+
+g = test_generator()
+next(g) # yield 1 전
+next(g) # yield 1과 2사이
+next(g) # yield 2와 3사이
+next(g) # yield 3 후
+
+```
+
+yield from 으로 for 문 대체
+
+```python
+
+def three_generator():
+    a = [1, 2, 3]
+     for i in a:
+		yield i
+ 
+gen = three_generator()
+
+
+def three_generator_after():
+    a = [1, 2, 3]
+    yield from a
+gen = three_generator()
+
+gen1 = three_generator_after()
+```
+
+## 사전 내포 표기
+
+아래 dictionary 자료형의 for 반복문 표현을 다음과 같이 축약할 수 있다.
+```python
+w = ['a', 'b', 'c']
+f = [1, 2, 3]
+
+d = {}
+for x, y in zip(w, f):
+	d[x] = y
+
+d = {x : y for x, y in zip(w, f)} 
+
+```
