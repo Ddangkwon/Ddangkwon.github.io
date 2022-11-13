@@ -8,7 +8,7 @@ tags : [python]
 ---
 # Digit Recognizer
 
-![titanic.PNG](./MNIST.png)
+![titanic.PNG](./img/MNIST.png)
 
 ```python
 import os
