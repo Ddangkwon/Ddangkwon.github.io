@@ -731,3 +731,5 @@ class Car(object):
 car = Car()
 car.ride(adult) # ok
 ```
+
+## 추상 클래스
