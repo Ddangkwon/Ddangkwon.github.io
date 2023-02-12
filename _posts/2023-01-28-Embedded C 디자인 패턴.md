@@ -66,7 +66,7 @@ bool get_alarm() {
 }
 ```
 ## Singleton 
-This pattern ensures that a class has only one instance and provides a global point of access to that instance.
+프로그램 전체에서 오직 하나의 인스턴스만을 생성하도록 하는 패턴입니다.
 ```c
 typedef struct {
     int value;
@@ -82,7 +82,7 @@ singleton_t *get_singleton() {
 }
 ```
 ## Template Method:
-This pattern defines the skeleton of an algorithm in a base class, allowing subclasses to fill in the details.
+알고리즘의 구조를 정의하면서 하위 클래스에서 세부적인 구현을 결정하도록 하는 패턴입니다
 ```c
 typedef struct {
     void (*init)();
@@ -110,7 +110,7 @@ algorithm_t algorithm = {
 ```
 
 ## Observer: 
-This pattern allows objects to be notified when the state of other objects changes, without having to tightly couple the objects.
+객체 간의 일대다 관계를 정의하여 하나의 객체의 변화를 여러 객체에 알립니다.
 
 ```c
 typedef struct observer_s observer_t;
@@ -141,7 +141,7 @@ void subject_set_value(subject_t* s, int value) {
 ```
 
 ## Factory Method: 
-This pattern allows a class to delegate the creation of objects to its subclasses, providing a level of abstraction.
+객체를 생성하는 공장 클래스를 정의하면서 객체의 생성 과정을 캡슐화하여 인터페이스를 통일시킵니다.
 
 ```c
 typedef struct {
@@ -168,9 +168,4 @@ object_t* create_object(char type) {
 ```
 
 
-## Model-View-Controller (MVC): 
-This pattern separates the code that defines the structure of a system (the model) from the code that defines the user interface (the view) and the code that handles user input (the controller).
 
-```c
-
-```
