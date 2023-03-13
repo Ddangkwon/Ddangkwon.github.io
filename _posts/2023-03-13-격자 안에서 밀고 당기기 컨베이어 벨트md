@@ -1,0 +1,138 @@
+---
+layout : post
+title : 격자 안에서 밀고 당기기  컨베이어 벨트
+comments : true
+categories : 
+- CodingTest
+tags : [CodingTest]
+---
+# 격자 안에서 밀고 당기기  컨베이어 벨트
+
+배열을 밀고 당기는 기초적인 문제
+vector 자료형을 배열처럼 사용해서 먼저 앞에 채워 넣을 값(circular term으로 결정)
+을 채워넣고 그 다음 circular term 이후의 값들을 차례대로 배열 쉬프트를 수행한 후 값을 매칭시켜 넣는다. circular term이 0일 경우 input 그대로 output 을 출력하도록 예외처리 수행
+
+
+
+```cpp
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int n, t;
+
+
+int main() {
+    // 여기에 코드를 작성해주세요.
+    
+    int num = 0;
+    vector<int> v;
+    
+    scanf("%d %d", &n , &t);
+    vector<int> answer(2*n, 0);
+    
+    
+
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &num);
+        v.push_back(num);
+    }
+    for(int i = 0; i < n; i++)
+    {
+        scanf("%d", &num);
+        v.push_back(num);
+    }
+    int circular_term = t % (2 * n);
+
+    if(circular_term == 0)
+    {
+        for(int idx = 0; idx < 2 * n; idx++)
+        {
+            answer[idx] = v[idx];
+        }
+    }
+    else
+    {
+        for(int idx = 0; idx < circular_term; idx++)
+        {
+            answer[idx] = v[2* n - circular_term + idx];
+        }
+        for(int idx = circular_term; idx < 2 * n; idx++)
+        {
+            answer[idx] = v[idx - circular_term];
+        }
+    }
+    
+    
+    for(int i = 0; i < n; i++)
+    {
+        printf("%d ", answer[i]);
+    }
+    printf("\n");
+    for(int i = n; i < 2 * n; i++)
+    {
+        printf("%d ", answer[i]);
+    }
+    printf("\n");
+    return 0;
+}
+```
+
+```cpp
+#include <iostream>
+
+#define MAX_N 200
+
+using namespace std;
+
+// 전역 변수 선언:
+int n, t;
+
+int u[MAX_N + 1];
+int d[MAX_N + 1];
+
+int main() {
+    // 입력:
+    cin >> n >> t;
+    
+    for(int i = 0; i < n; i++)
+        cin >> u[i];
+    
+    for(int i = 0; i < n; i++)
+        cin >> d[i];
+        
+    while(t--) {
+        // Step 1
+        // 위에서 가장 오른쪽에 있는 숫자를 따로 temp값에 저장해놓습니다.
+        int temp = u[n - 1];
+        
+        // Step 2
+        // 위에 있는 숫자들을 완성합니다. 
+        // 오른쪽에서부터 채워넣어야 하며, 
+        // 맨 왼쪽 숫자는 아래에서 가져와야함에 유의합니다.
+        for(int i = n - 1; i >= 1; i--)
+			u[i] = u[i - 1];
+		u[0] = d[n - 1];
+        
+        // Step 3
+        // 아래에 있는 숫자들을 완성합니다. 
+        // 마찬가지로 오른쪽에서부터 채워넣어야 하며, 
+        // 맨 왼쪽 숫자는 위에서 미리 저장해놨던 temp값을 가져와야함에 유의합니다.
+        for(int i = n - 1; i >= 1; i--)
+			d[i] = d[i - 1];
+		d[0] = temp;
+    }
+
+    // 출력:
+    for(int i = 0; i < n; i++)
+		cout << u[i] << " ";
+	cout << endl;
+    
+	for(int i = 0; i < n; i++)
+		cout << d[i] << " ";
+        
+    return 0;
+}
+```
