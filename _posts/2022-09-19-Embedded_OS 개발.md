@@ -3,8 +3,8 @@ layout : post
 title : Embedded OS 개발
 comments : true
 categories : 
-- Embedded Engineering
-tags : [Embedded Engineering]
+- Embedded Engineering, RTOS
+tags : [Embedded Engineering, RTOS]
 ---
 # Embedded OS 개발 프로젝트
 
