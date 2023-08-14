@@ -1,0 +1,38 @@
+---
+layout : post
+title : CAN 통신의 이해
+comments : true
+categories : 
+- Embedded Engineering
+tags : [Embedded Engineering]
+---
+
+# CAN 통신
+
+CAN 통신은 버스형 토폴로지
+
+가운데 공통으로 버스를 두는 “버스형 토폴로지”
+
+모든 메세지는 브로드캐스트 방식으로 송신
+
+## CAN 커넥터
+
+D-Sub 9 pin connector
+
+CAN-LOW 2번 Pin, CAN-HIGH 7번 Pin
+
+### 120옴 종단저항
+
+반사파에 대한 신호 왜곡 방지를 위해 버스 양 끝단에 종단 저항을 연결한다
+
+CAN 에서는 CAN High, CAN Low 간의 전압 차를 이용하여 데이터를 표현한다.
+
+- CAN High – CAN Low 값이 0.9 ~ 5 v = 0을 표현
+- CAN High – CAN Low 값이 -0. 1 ~ 0.5 v= 1을 표현
+
+CAN에서 데이터 0을 Dominant, 데이터 1을 Recessive 라고 표현한다.
+CAN 에서 Dominant가 Recessive보다 우선순위가 높다
+
+전압 차를 이용한 방법의 장점
+
+- Noise에 강하다(Noise는 일반적으로 CAN HIGH, LOW에 서로 비슷하게 영향을 주기 때문에 전압 차를 사용하는 CAN은 Noise에 상대적으로 강하다)
