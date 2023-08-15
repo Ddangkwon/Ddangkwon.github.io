@@ -36,3 +36,38 @@ CAN 에서 Dominant가 Recessive보다 우선순위가 높다
 전압 차를 이용한 방법의 장점
 
 - Noise에 강하다(Noise는 일반적으로 CAN HIGH, LOW에 서로 비슷하게 영향을 주기 때문에 전압 차를 사용하는 CAN은 Noise에 상대적으로 강하다)
+
+
+# CAN Controller and transceiver
+- 각각의 제어기 안에는 일종의 작은 컴퓨터인 MCU 가 있다.
+- MCU 내부에는 각종 peripheral들이 있고, 그 중에 CAN 통신과 관련된 역할을 하는 CAN Controller 라는 periphera이 있다.
+- CAN Controller가 송신하는 데이터는 CAN TX 핀을 통해서 캔 트랜시버에게 전달된다.
+- CAN Tranceiver는 캔 컨트롤러로부터 정보를 받아서 CAN High, CAN Low 핀으로 실제 ‘전압‘ 을 출력하는 역할을 한다. 반대로 다른 제어기가 메세지를 전송하면 CAN High, CAN Low의 전압값을 읽어서 비트로 해석하여 캔 컨트롤러에게 전달해준다. (CAN RX 핀)
+- 캔 컨트롤러 : 메세지에 담기는 값과 관련 (Data Link Layer라고 함)
+- 트랜시버 : 실제로 전선에 출력되는 전압과 관련 (Physical Layer라고 함)
+
+
+# Baudrate
+
+- CAN 통신 속도를 Baud Rate이라고 한다. 단위는 bps이다.
+
+- 해당 네트워크에 참여하는 모든 제어기들은 모드 통일된 Baud Rate을 사용해야한다.
+
+- Baud Rate을 얼마로 할 건지는 OEM(완성차회사)에서 지정하여 CAN DB에 나타낸다.
+
+- 캔 프로토콜은 크게 Low—Speed CAN, High Speed CAN, CAN FD 3가지 종류로 나뉘며 각 프로토콜 별로 최대속도의 차이가 있다.
+- 물리적인 버스(전선)의 최대길이에 따라 최대속도에 한계가 있다.
+- Sampling Pointt: 하나의 비트 값이 0인지 1인지 판단하는 지점을 의미. 단위는 % 이다.
+- Sampling Point 단위는 % 이다. 이것도 OEM에서 몇 %로 해야하는지 정해준다.
+- 하나의 bit는 Sync, Tseg1,Tseg2 라는 것으로 나뉘고 이것들은 모두 여러 개의 time qunta로 구성됨
+- Time qunta는 Tseg1, Tseg2 의 길이를 세는 단위
+- Tseg1, Tseg2의 값을 적절하게 정함으로써 샘플링 포인트 값을 조절할 수 있음.
+- Tseg1, Tseg2 얼마로 할지도 제조사에서 정해주기도 함
+
+
+### SJW(Synchronization Jump Width) 란?
+
+Tseg1, Tseg2 의 제한 범위에 대한 내용
+
+
+
