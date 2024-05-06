@@ -9,6 +9,7 @@ tags : [CodingTest]
 
 # 삼성 SW 역량 테스트 B형 Reference 코드
 
+## Hash 코드
 ## Hash의 hashing 함수
 
 ```cpp
@@ -33,106 +34,53 @@ unsigned long hash(const char *str)
 정렬된 배열 merge하기
 ```cpp
 #include <stdio.h>
+#define ARR_MAX 110
 
-int N, M;
-
-int a[1000100];
-int b[1000100];
-
-int main(void)
-{
-	scanf("%d %d", &N, &M);
-
-	for (int i = 0; i < N; i++)
-	{
-		scanf("%d", &a[i]);
-	}
-		
-	for (int i = 0; i < M; i++)
-	{
-		scanf("%d", &b[i]);
-	}
-	int i, j;
-	i = 0;
-	j = 0;
-
-	while (i < N && j < M)
-	{
-
-		if (a[i] > b[j])
-		{
-			printf("%d ", b[j++]);
-		}
-		else
-		{
-			printf("%d ", a[i++]);
-		}
-	}
-	// 어차피 while 문 중 하나만 실행될 것
-	while (i < N)
-	{
-		printf("%d ", a[i++]);
-	}
-	
-	while (j < M)
-	{
-		printf("%d ", b[j++]);
-	}
-		
-	return 0;
-}
-
-```
-
-- Merge Sort 구현하기
-
-```cpp
-#include <stdio.h>
-
-int b[100];
-
+int b[ARR_MAX];
+int marr[ARR_MAX];
 void merge(int* arr, int start, int end)
 {
 	int mid, i, j, k;
 
 	mid = (start + end) >> 1;
-	i = start;
+	i = k = start;
 	j = mid + 1;
-	k = 0;
-
 	while (i <= mid && j <= end)
 	{
-		if (arr[i] <= arr[j]) 
-			b[k++] = arr[i++];
-		else 
-			b[k++] = arr[j++];
+		if (arr[i] < arr[j])
+		{
+			marr[k++] = arr[i++];
+		}
+		else
+		{
+			marr[k++] = arr[j++];
+		}
 	}
-
 	while (i <= mid)
 	{
-		b[k++] = arr[i++];
+		marr[k++] = arr[i++];
 	}
+		
 	while (j <= end)
 	{
-		b[k++] = arr[j++];
+		marr[k++] = arr[j++];
 	}
-	for (i = start; i <= end; i++)
+
+	for (int i = start; i <= end; i++)
 	{
-		arr[i] = b[i - start];
+		arr[i] = marr[i];
 	}
 
 }
-
 void sort(int* arr, int start, int end)
 {
-	int mid;
 	if (start >= end)
 		return;
-
-	mid = (start + end) >> 1;
+	int mid = (start + end) >> 1;
 	sort(arr, start, mid);
 	sort(arr, mid + 1, end);
 	merge(arr, start, end);
+	
 }
 
 int main(void)
@@ -144,7 +92,7 @@ int main(void)
 
 	for (int i = 0; i < length; i++)
 	{
-		printf("%d ", b[i]);
+		printf("%d ", marr[i]);
 	}
 	return 0;
 }
@@ -253,3 +201,106 @@ int main(void){
 또한 분할 이후에 해당 피벗을 다시 처리하는 부분에서 다시 호출하지 않는다.
 
 동적 계획법은 이미 해결한 문제를 반복적으로 해결하여 비효율적인 문제에서 유용할 것이다.
+
+
+## 우선순위 큐(priority queue)
+
+- B형에서 Merge Sort는 마지막에 이분 탐색을 위해 필요한 경우가 많다.
+ - 그리고 '무언가'를 push해주고, 그 중 가장 우선순위가 높은 '무언가'를 pop하면서, 순서를 유지하고 싶을 때는 우선순위 큐를 이용한다.
+ - 우선순위 큐는 즉 자동 정렬되는 큐라고 이해하면 편하다.
+
+```cpp
+#include <stdio.h>
+
+#define ARR_MAX 110
+
+int heap[ARR_MAX];
+int hn;
+int N;
+int pop(int* heap, int& hn)
+{
+	register int tmp, ret;
+	//1) pop의 return값 heap[1]을 기억해둔다.
+	ret = heap[1];
+	//2) heap의 배열에서 가장 끝에 값, 즉 heap[hn]을 heap[1]로 변경한다.
+	heap[1] = heap[hn];
+	//3) heap[hn]은 최악의 우선순위값(최소힙이므로 0x7fff0000 정도의 큰 값)으로 변경해둔다.
+	//4) heap이 1개 줄었으므로 hn 을 1 감소 시킨다.
+	heap[hn--] = 0x7fff0000;
+
+	for (register int i = 1; i * 2 <= hn;)
+	{
+		if (heap[i] < heap[i * 2] && heap[i] < heap[i * 2 + 1]) break;
+		else if (heap[i * 2] < heap[i * 2 + 1])
+		{
+			tmp = heap[i * 2];
+			heap[i * 2] = heap[i];
+			heap[i] = tmp;
+
+			i = i * 2;
+		}
+		else
+		{
+			tmp = heap[i * 2 + 1];
+			heap[i * 2 + 1] = heap[i];
+			heap[i] = tmp;
+
+			i = i * 2 + 1;
+		}
+	}
+
+	return ret;
+}
+
+void push(int* heap, int& hn, int x)
+{
+	register int tmp;
+	//모든 i에 대해서 자식 node는 i * 2, i * 2 + 1이 되고,
+	//부모 node는 i / 2로 하면 된다.
+
+	heap[++hn] = x;
+	for (register int i = hn; i > 1; i /= 2)
+	{
+		// 자식 노드가 더 크면 pass
+		if (heap[i / 2] <= heap[i]) 
+			break;
+		// 아니면 조상 <-> 부모 <-> 자식 노드간에 교환을 반복해서 수행한다. (부모노드가 자식노드보다 작을때까지)
+		// 부모 노드와 자식 노드와의 교환
+		tmp = heap[i / 2];
+		heap[i / 2] = heap[i];
+		heap[i] = tmp;
+	}
+}
+
+int main(void)
+{
+	scanf("%d", &N);
+	for (int i = 0; i < N; i++)
+	{
+		int x = scanf("%d", &x);
+		if (x)
+		{
+			push(heap, hn, x);
+		}
+		else
+		{
+			if (hn)
+			{
+				printf("%d", pop(heap, hn));
+			}
+			// 큐가 비어있는 경우
+			else
+			{
+				printf("0\n");
+			}
+		}
+
+	}
+	//int heap_len = sizeof(heap) / sizeof(int);
+	//for (int i = 1; i < heap_len; i++)
+	//{
+	//	printf("%d ", heap[i]);
+	//}
+	return 0;
+}
+```
