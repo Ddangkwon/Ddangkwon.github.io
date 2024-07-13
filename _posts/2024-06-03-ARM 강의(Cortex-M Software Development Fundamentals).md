@@ -214,3 +214,118 @@ AAPCS에 따르면, 스택은 외부 가시 경계에서 8바이트로 정렬되
 - **Armv8-M 메모리 모델**: 다양한 메모리 영역과 속성을 이해하여 최적의 성능을 제공합니다.
 - **Arm 컴파일러**: 최신 아키텍처 기능을 지원하며, 기능 안전 요구 사항을 충족할 수 있습니다.
 - **AAPCS**: 효율적인 함수 호출과 인수 전달을 위한 표준을 이해하면 더 나은 코드를 작성할 수 있습니다.
+
+
+# Armv8-M Mainline Debug
+
+## 학습 목표
+이 모듈의 끝에서 다음을 할 수 있습니다:
+- Debug, Trace 및 Profiling 요구 사항 및 기능 설정
+- Invasive Debug와 Non-invasive Debug의 구분
+- Armv8-M Mainline Debug 및 Trace 구성 요소 설명: FPB, DWT, ITM, MTB, ETM 및 TPIU
+- 프로세서가 중단된 다양한 Debug 이벤트 감지
+- Semihosting 호출과 표준 Breakpoints의 차이점 구별
+- Profiling 기능 설명: DWT 및 Armv8.1-M Performance Monitoring Unit (PMU)
+
+## 기본 Debug 요구 사항
+- **Run Control**
+  - 코드 단일 단계 실행
+  - 명령어에 Breakpoints 설정
+  - 데이터 접근에 Watchpoints 설정
+- **State Control**
+  - 프로세서 상태 읽기 및 쓰기
+  - 시스템 메모리 접근
+  - 주변기기 접근
+- **Execution History**
+  - 실행 추적 정보
+
+## Armv8-M Mainline Debug 구성 요소
+- **DAP**
+- **ETM**
+- **Trigger**
+- **TPIU**
+- **SW/JTAG**
+- **Debug Agent**
+- **FPB**
+- **DWT**
+- **ITM**
+- **MTB**
+- **ROM Table**
+- **PIL**
+- **CTI**
+- **Bus Matrix**
+- **MPU**
+- **SAU**
+- **IPPB**
+
+## Invasive Debug vs. Non-invasive Debug
+- **Invasive Debug**
+  - 프로세서 제어: 코어 중단, 코드 단일 단계 실행, 코드 실행
+  - 프로세서 레지스터 검사 및 변경: Debug 상태에서
+  - 메모리와 메모리 매핑 레지스터 검사 및 변경: 프로세서 실행 중이나 중단 중
+- **Non-invasive Debug**
+  - 프로세서의 동작 관찰: 프로세서 중단 없이
+  - 프로그램 실행에 비침입적일 수 있음
+  - Non-invasive Debug는 MTB, ITM, ETM 및 PMU를 통해 제공됨
+
+## Debug 상태 - 중단 Debug
+Debug 상태가 프로세서에서 활성화되고 적격한 Debug 이벤트가 발생하면 프로세서는 Debug 상태로 들어갑니다. 이 상태에서는 프로세서가 멈추고, 명령어가 실행되지 않으며, 인터럽트가 서비스되지 않습니다. Debug 인터페이스를 통해 프로세서를 제어합니다.
+
+## 중단 Debug를 위한 Debug 이벤트
+- 전통적인 시작/중단 Debug
+- PMU Sticky 플래그가 PMU 카운터가 오버플로우했음을 나타냄
+- EXTERNAL EDBGRQ 입력이 다른 SoC 구성 요소에서 어서트됨
+- VCATCH 벡터 캐치가 트리거됨
+- DWTTRAP이 Watchpoints와 일치하는 주소로 데이터 접근
+- BKPT 명령어가 실행되거나 FPB에서 Breakpoints가 일치
+- 디버거로부터의 HALTED 중단 요청
+
+## 셀프 호스팅 Debug
+프로세서를 구성하여 중단 대신 DebugMonitor 예외를 받도록 할 수 있습니다. 이는 실시간 요구사항이 있는 시스템 디버깅에 적합합니다. DebugMonitor는 PMU 오버플로우를 처리하는 데 사용될 수 있습니다.
+
+## 벡터 캐치
+- 선택된 예외를 트랩하는 메커니즘
+- 예외가 어서트되면 코어가 중단됨
+- 디버거를 통해 선택
+- 리셋, HardFault, UsageFault, BusFault, SecureFault와 같은 예외를 트랩할 수 있음
+
+## FPB - Flash Patch 및 Breakpoints 유닛
+FPB는 명령어 페치에 Breakpoints를 설정할 수 있도록 지원합니다. 소프트웨어 Breakpoints는 BKPT 명령어로 구현되며, 하드웨어 Breakpoints는 FPB 비교기를 통해 구현됩니다.
+
+## Breakpoints vs. Watchpoints
+- **Breakpoints**: 명령어 디버깅에 사용
+- **Watchpoints**: 데이터 접근 디버깅에 사용
+
+## DWT Watchpoints
+DWT는 데이터 주소와 명령어 주소 비교기를 제공합니다. DWT는 데이터 값과 데이터 주소가 일치할 때 중단할 수 있습니다. DWT 레지스터는 디버거에 의해 사용될 수 있습니다.
+
+## Semihosting
+Semihosting은 라이브러리 코드가 Arm 타겟에서 실행되지만 저수준 I/O는 호스트에 의해 처리됩니다. BKPT 명령어가 호스트 접근을 시작합니다.
+
+## Trace: 소개
+Trace는 구성 요소가 어떻게 실행되고 성능을 발휘하는지 보여주는 데이터를 캡처하는 과정입니다. 주로 프로그램 Trace(명령어 Trace)나 응용 프로그램 Trace(도구 Trace)가 있습니다.
+
+## MTB - Micro Trace Buffer
+MTB는 간단한 실행 추적 기능을 제공하며, 실행 중의 분기를 온칩 RAM에 저장합니다.
+
+## ITM - Instrumentation Trace Macrocell
+ITM은 소프트웨어와 하드웨어가 생성하는 Trace 패킷을 생성하고 출력합니다.
+
+## DWT - Trace 캡처
+DWT는 주소 일치, 주기적 PC 샘플링, 데이터 값, 예외 입출 및 반환, 이벤트 카운터와 같은 이벤트에 대한 패킷을 생성합니다.
+
+## ETM - Embedded Trace Macrocell
+ETM은 명령어 Trace만 지원하는 비침입 Debug 구성 요소입니다. ETM 하드웨어는 프로세서의 활동을 모니터링합니다.
+
+## TPIU - Trace Port Interface Unit
+TPIU는 ETM과 ITM에서 데이터를 형식화하고 직렬화합니다. TPIU는 비동기적으로 코어 클럭과 TRACECLKIN에서 파생된 TRACECLK로 데이터를 클럭킹합니다.
+
+## Trace Port와 대역폭
+ETM은 거의 0에서 여러 바이트의 명령어까지 데이터 속도를 생성할 수 있습니다. TRACECLKIN이 코어 클럭 속도로 실행될 때 명령어 Trace에 대해 2-3개의 핀이 필요합니다.
+
+## DWT - Performance Profiling
+DWT는 주기(CYCCNT), 폴디드 명령어(FOLDCNT), 모든 로드 또는 저장 명령어를 실행하는 데 필요한 추가 주기(LSUCNT), 프로세서 수면 주기(SLEEPCNT), 다중 주기 명령어와 명령어 페치 지연을 실행하는 데 필요한 추가 주기(CPICNT), 예외 처리에 소비된 주기(EXCCNT)를 위한 카운터를 포함합니다.
+
+## PMU - Performance Monitoring Unit
+PMU는 이벤트 통계 정보를 수집하고 성능 분석을 위해 시스템 Debug에 사용됩니다. 31개의 16비트 이벤트 카운터와 하나의 32비트 주기 카운터를 지원합니다. PMU 카운터와 DWT 프로파일링 카운터의 작동은 상호 배타적입니다.
+
