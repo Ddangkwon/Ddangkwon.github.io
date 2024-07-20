@@ -435,3 +435,107 @@ C 라이브러리의 디바이스 드라이버 수준 기능을 타겟 하드웨
 - ELF 이미지에서 DWARF 디버그 정보를 로드하여 ROM 이미지를 디버깅할 수 있습니다.
 
 
+# Cortex-M3 Startup & Exception Handling
+
+
+## Tarmac Trace
+- Arm 전용 추적 형식
+- Fast Models / FVPs (Fixed Virtual Platforms)에서 수집 가능
+- RTL (Register Transfer Level) 시뮬레이션에서 수집 가능
+- 실행된 명령어, 전송된 레지스터 값, 메모리 접근 및 발생한 예외를 보여줌
+- Arm Fast Models 문서에 문서화됨: [Tarmac Trace Documentation](https://developer.arm.com/docs/100964/1161/plug-ins-for-fast-models/tarmactrace)
+
+## Tarmac Trace 예제
+```
+8004 clk IT (8004) 0000061c 6801 T thread : LDR      r1,[r0,#0]
+8004 clk MR4 20000170 00000000
+8004 clk R r1 00000000
+```
+
+## 시작 예제
+- CMSIS 시작 코드 사용
+- C에서 인터럽트 핸들러 설정
+- CMSIS 함수를 사용하여 인터럽트를 활성화하고 트리거
+
+```c
+Hello, world!
+Enabled device-specific timer 0
+Hello from TIM0_IRQHandler()!
+```
+
+## 리셋 단계
+
+### 리셋 핸들러
+```assembly
+Reset_Handler   PROC
+EXPORT  Reset_Handler             [WEAK]
+IMPORT  SystemInit
+IMPORT  __main
+LDR     R0, =SystemInit
+BLX     R0
+LDR     R0, =__main
+BX      R0
+ENDP
+```
+
+### 리셋 과정
+1. 리셋 예외 발생
+2. 스택 포인터 값 설정
+3. 프로세서가 T32 상태에 있음을 나타내는 CPSR 값 설정
+4. 리셋 핸들러의 첫 번째 명령어 실행 시작
+
+### 벡터 테이블
+리셋 핸들러 주소는 벡터 테이블에 지정됨
+
+```assembly
+__Vectors       DCD     __initial_sp              ; Top of Stack
+DCD     Reset_Handler             ; Reset Handler
+```
+
+## __main() 함수
+- 스캐터 로딩
+- C 라이브러리 초기화
+- 애플리케이션 코드 실행 시작
+
+## main() 함수의 애플리케이션 코드
+
+```c
+int main(void)
+{
+    printf("Hello, world!\n");
+    /* Initialize TIM0_IRQn */
+    NVIC_SetPriority(TIM0_IRQn, 1);
+    NVIC_EnableIRQ(TIM0_IRQn);
+    printf("Enabled device-specific timer 0\n");
+    /* Set TIM0_IRQn to pending */
+    NVIC_SetPendingIRQ(TIM0_IRQn);
+    return 0;
+}
+```
+
+## 예외 처리
+
+### 소프트웨어에서 예외 트리거
+
+```c
+/* Set “pending” bit for the interrupt to 1. */
+/* Processor takes exception and branches to exception handler. */
+NVIC_SetPendingIRQ(TIM0_IRQn);
+```
+
+### 예외 처리 과정
+- 프로세서는 필요한 레지스터를 스택에 자동으로 저장
+
+```assembly
+5484 clk E 00000cd0 00000012 CoreEvent_EXT_INT2
+5485 clk IT (5485) 00000c7c a001 T handler : ADR      r0,{pc}+8 ; 0xc84
+```
+
+## 요약
+
+### 핸들러 모드
+- 벡터 테이블 사용
+- 예외 처리 과정에서 스택 업데이트
+- 핸들러로 분기
+- 스택 레지스터 업데이트
+- 핸들러에서 복귀
