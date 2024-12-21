@@ -1,13 +1,13 @@
 ---
 layout : post
-title : [통신관련 용어정리] EN-DC (E-UTRAN New Radio - Dual Connectivity), X2G
+title : 통신관련 용어정리 EN-DC (E-UTRAN New Radio - Dual Connectivity), X2G
 comments : true
 categories : 
 - Telecommunication
 tags : [Telecommunication]
 ---
 
-# EN-DC (E-UTRAN New Radio - Dual Connectivity
+# EN-DC (E-UTRAN New Radio - Dual Connectivity)
 
 
 **EN-DC (E-UTRAN New Radio - Dual Connectivity)**는 LTE와 5G 네트워크를 동시에 활용하는 기술로, 사용자 단말(UE)이 LTE와 5G NR(New Radio) 기지국을 동시에 연결해 데이터 전송 속도와 네트워크 효율성을 높이는 방식이다. 이 기술은 3GPP Rel-15에서 처음 도입되었고, 5G 초기 단계의 상용화에 중요한 역할을 한다.

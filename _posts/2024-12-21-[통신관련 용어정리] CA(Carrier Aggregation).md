@@ -1,6 +1,6 @@
 ---
 layout : post
-title : [통신관련 용어정리] CA(Carrier Aggregation)
+title : 통신관련 용어정리 CA(Carrier Aggregation)
 comments : true
 categories : 
 - Telecommunication
