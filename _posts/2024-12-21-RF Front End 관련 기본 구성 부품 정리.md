@@ -1,3 +1,12 @@
+---
+layout : post
+title : 통신 관련 부품(RF Front End)
+comments : true
+categories : 
+- Telecommunication
+tags : [Telecommunication]
+---
+
 # RF Front End 구성 요소
 
 통신 시스템에서 RF (Radio Frequency) Front End는 신호 송수신에 중요한 역할을 합니다. 아래는 RF Front End에서 사용되는 주요 구성 요소와 그 세부 설명입니다.
