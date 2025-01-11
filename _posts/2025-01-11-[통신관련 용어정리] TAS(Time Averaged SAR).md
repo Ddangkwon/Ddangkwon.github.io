@@ -1,6 +1,6 @@
 ---
 layout : post
-title : [통신관련 용어정리] TAS(Time Averaged SAR)
+title : TAS(Time Averaged SAR)
 comments : true
 categories : 
 - Telecommunication
