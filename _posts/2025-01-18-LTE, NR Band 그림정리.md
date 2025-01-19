@@ -14,3 +14,12 @@ tags : [Telecommunication]
 # NR
 
 ![NR_BAND](assets/images/5G_NR_FR1_Bands.png)
+
+
+# LTE
+
+![LTE_BAND](assets/images/LTE_Band.png)
+
+# NR
+
+![NR_BAND](assets/images/5G_NR_FR1_Bands.png)
