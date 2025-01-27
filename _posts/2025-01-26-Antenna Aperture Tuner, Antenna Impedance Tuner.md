@@ -36,8 +36,7 @@ Antenna Aperture Tuner는 **물리적 또는 전기적 Aperture**를 조정하�
 
 또한 Aperture Tuning은 안테나가 다중 대역에서 동시에 통신할 수 있도록 하여 Carrier Aggregation을 지원할 수 있게 합니다.
 
-
-![Antenna impedance matching](/assets/img/Antenna impedance matching.png){: width="350" class="normal"}
+![Antenna aperture tuning](/assets/img/Antenna aperture tuning.png){: width="700" class="normal"}
 
 
 
@@ -68,7 +67,7 @@ Antenna Impedance Tuner는 안테나와 RFFE 간의 **Impedance Matching**을 �
 안테나 임피던스 매칭은 **안테나 피드 포인트(antenna feed point)**에서 이루어진다. 이러한 유형의 안테나 튜닝을 사용하면 안테나 입력 임피던스를 50 Ω에 맞춤으로써 안테나로 전달되는 순방향 전력을 최적화할 수 있습니다. 이와 같은 방식으로, 임피던스 튜닝은 주파수 및 환경적 요인을 보정하여 **RF Front-End(RFFE)**와 안테나 간의 신호 전송을 극대화하는 데 도움을 줍니다.
 
 
-![Antenna aperture tuning](/assets/img/Antenna aperture tuning.png){: width="350" class="normal"}
+![Antenna impedance matching](/assets/img/Antenna impedance matching.png){: width="700" class="normal"}
 
 
 #### Impedance Matching 에 50 Ω 을 쓰는 이유
