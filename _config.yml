@@ -1,5 +1,12 @@
 # The Site Configuration
 
+# Math equation
+markdown: kramdown
+highlighter: rouge
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
 # Import the theme
 theme: jekyll-theme-chirpy
 
