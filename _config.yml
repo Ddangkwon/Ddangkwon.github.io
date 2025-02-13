@@ -28,7 +28,7 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: Ddangkwon's Software Engineering Knowledge Storage # the main title
+title: DK's Software Engineering Knowledge Storage # the main title
 
 tagline: Software Engineering Knowledge Repo.   # it will display as the sub-title
 
@@ -36,10 +36,10 @@ description: >-                        # used by seo meta and the atom feed
   임베디드 ASW 엔지니어의 소소한 지식 저장소입니다.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://Ddangkwon.github.io/'
+url: ''
 
 github:
-  username: Ddangkwon   # change to your github username
+  username: DK   # change to your github username
 
 twitter:
   username: twitter_username            # change to your twitter username
@@ -47,12 +47,11 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: Ddangkwon
-  email: semi109502@gmail.com             # change to your email address
+  name: DK
+  email:              # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/Ddangkwon       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
