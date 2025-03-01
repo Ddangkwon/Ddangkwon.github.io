@@ -17,7 +17,7 @@ CPU가 메모리를 접근할 때, 특정 크기(예: 2, 4, 8 바이트) 단위�
 
 예를 들어, struct을 사용할 때 멤버의 크기 때문에 **자동으로 패딩이 추가**될 수 있습니다.
 
----
+
 
 ## Word Alignment 문제 예제
 
@@ -43,9 +43,6 @@ int main() {
 Size of struct Data: 12 bytes
 
 
-
-
----
 
 ## Union을 활용한 Word Alignment 최적화
 
@@ -80,7 +77,7 @@ Size of union DataAlign: 4 bytes
 - char a 와 short c는 int와 동일한 메모리를 사용하므로 **추가 패딩 없이 정렬됨**
 - 일반 구조체보다 메모리를 덜 사용
 
----
+
 
 ### 방법 2: 더 큰 바이트 정렬 기준 적용
 
@@ -145,7 +142,7 @@ Size of union WordAligned: 16 bytes
 - int, short, char들이 **추가적인 패딩 없이** 저장됨
 - CPU가 **한 번의 연산으로 8바이트 접근 가능**하여 성능 향상
 
----
+
 
 ## 정리
 
