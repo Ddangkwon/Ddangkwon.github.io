@@ -39,9 +39,9 @@ int main() {
 ```
 
 **출력 예시 (시스템에 따라 다름)**:
-```
+
 Size of struct Data: 12 bytes
-```
+
 
 
 
@@ -71,9 +71,9 @@ int main() {
 ```
 
 **출력 결과 (예시)**:
-```
+
 Size of union DataAlign: 4 bytes
-```
+
 
 **메모리 절약 효과**  
 - union 내부에서 가장 큰 데이터(int b)의 크기인 4바이트를 기준으로 정렬됨
@@ -104,9 +104,9 @@ int main() {
 ```
 
 **출력 결과**:
-```
+
 Size of union WordAligned: 8 bytes
-```
+
 
 
 
@@ -136,13 +136,13 @@ Size of union WordAligned: 16 bytes
 ```
 
 **효율적인 데이터 저장**  
-- `bytes[16]`을 활용하여 **16바이트 정렬 기준**을 맞춤
-- `long long`, `int`, `short`, `char`들이 **추가적인 패딩 없이** 저장됨
+- bytes[16]을 활용하여 **16바이트 정렬 기준**을 맞춤
+- long long, int, short, char들이 **추가적인 패딩 없이** 저장됨
 - CPU가 **한 번의 연산으로 16바이트 접근 가능**하여 성능 향상
 
 **효율적인 데이터 저장**  
-- `bytes[8]`을 활용하여 **8바이트 정렬 기준**을 맞춤
-- `int`, `short`, `char`들이 **추가적인 패딩 없이** 저장됨
+- bytes[8]을 활용하여 **8바이트 정렬 기준**을 맞춤
+- int, short, char들이 **추가적인 패딩 없이** 저장됨
 - CPU가 **한 번의 연산으로 8바이트 접근 가능**하여 성능 향상
 
 ---
