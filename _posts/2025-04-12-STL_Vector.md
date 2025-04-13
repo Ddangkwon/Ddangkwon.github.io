@@ -12,7 +12,11 @@ tags : [CodingTest]
 ## 1. 개요
 vector는 C++ STL(Standard Template Library)의 대표적인 시퀀스 컨테이너로, 동적 배열(dynamic array)을 제공한다. 메모리 크기를 자동으로 조절하면서 데이터를 저장할 수 있으며, 배열처럼 임의 접근(random access)이 가능하다.
 
+</br>
+
 ---
+
+</br>
 
 ## 2. 헤더와 선언
 
@@ -28,7 +32,11 @@ vector<int> v4 = {1, 2, 3};   // 초기화 리스트
 
 ---
 
+</br>
+
 ## 3. 주요 멤버 함수
+
+</br>
 
 ### 3.1 요소 삽입
 
@@ -36,6 +44,8 @@ vector<int> v4 = {1, 2, 3};   // 초기화 리스트
 v.push_back(10);        // 마지막에 삽입
 v.insert(v.begin(), 5); // 맨 앞에 삽입
 ```
+
+</br>
 
 ### 3.2 요소 삭제
 
@@ -45,6 +55,7 @@ v.erase(v.begin());         // 첫 번째 요소 삭제
 v.erase(v.begin() + 1, v.end()); // 일부 구간 삭제
 v.clear();                  // 전체 삭제
 ```
+</br>
 
 ### 3.3 접근
 
@@ -54,6 +65,7 @@ v.at(i);        // 인덱스 접근 (범위 검사 있음)
 v.front();      // 첫 번째 요소
 v.back();       // 마지막 요소
 ```
+</br>
 
 ---
 
@@ -66,8 +78,11 @@ v.resize(20);   // 크기 변경 (자동 초기화됨)
 v.reserve(100); // 용량 미리 확보
 v.shrink_to_fit(); // 여유 메모리 반환
 ```
+</br>
 
 ---
+
+</br>
 
 ## 5. 반복자(iterator)
 
@@ -77,6 +92,8 @@ for (it = v.begin(); it != v.end(); ++it) {
     cout << *it << " ";
 }
 ```
+
+</br>
 
 ### 범위 기반 for 문
 
@@ -95,6 +112,8 @@ for (int x : v) {
 
 ## 6. 복사 및 비교
 
+</br>
+
 ```cpp
 vector<int> a = {1, 2, 3};
 vector<int> b = a;       // 복사
@@ -105,6 +124,8 @@ bool equal = (a == b);   // 비교
 
 ## 7. 2차원 vector
 
+</br>
+
 ```cpp
 vector<vector<int>> matrix(3, vector<int>(4, 0)); // 3x4 2차원 벡터 0으로 초기화
 ```
@@ -112,6 +133,8 @@ vector<vector<int>> matrix(3, vector<int>(4, 0)); // 3x4 2차원 벡터 0으로 
 ---
 
 ## 8. vector와 포인터
+
+</br>
 
 ```cpp
 vector<int*> ptrVec;
@@ -130,6 +153,8 @@ ptrVec.push_back(&a);
 - **push_back** 시 capacity가 늘어날 수 있으며, 복사 비용이 발생한다
 - 메모리 증가 방식은 구현체마다 다르지만 일반적으로 1.5~2배씩 증가함
 
+</br>
+
 ---
 
 ## 10. vector 사용 시 주의사항
@@ -138,11 +163,12 @@ ptrVec.push_back(&a);
 - 메모리 할당/복사 오버헤드 고려 필요
 - iterator는 재할당 후 무효화될 수 있다
 
+</br>
 ---
 
 ## 11. 정리
 
 - vector는 임의 접근(random access)이 가능하고 크기 조절이 자동인 배열
 - 삽입/삭제는 끝에서 할 때 가장 효율적
-- 다양한 STL 알고리즘과 함께 사용할 수 있는 범용 컨테이너이다
+- 다양한 STL 알고리즘과 함께 사용할 수 있는 범용 컨테이너
 
