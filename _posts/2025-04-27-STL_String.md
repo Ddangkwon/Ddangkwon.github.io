@@ -225,3 +225,63 @@ int main(){
     return 0;
 }
 ```
+
+## SubString (부분 문자열)
+
+
+
+## [문제]
+공백이 포함된 문장을 입력받아 위의 작업을 처리한 후 짝수 번째(첫 번째는 홀수 번째이다) 문자열만 입력 순서 반대로 출력하는 프로그램을 작성하시오. 
+
+
+## 입력
+길이가 100을 넘지 않는 공백을 포함한 문자열 S를 입력받는다.
+
+
+## 출력
+한 줄에 짝수 번째 문자열만 입력의 반대순으로 출력한다.
+
+
+```cpp
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    string S;
+    string answer[100];
+    int cnt = 0;
+    getline(cin, S); // 공백 포함 문자열 입력 받고싶을 때 사용 
+
+
+    // 시작 포인트와, len 값을 저장하는 local 변수 
+    int start = 0, tmp_cnt = 0;
+    
+    for(int i = 0; i < S.length(); i++){
+        tmp_cnt++;
+        if(S[i] == ' '){
+            answer[cnt++] = S.substr(start, tmp_cnt - 1);
+            tmp_cnt = 0;
+            start = i + 1;
+        }
+        if(i == S.length() - 1)
+            answer[cnt++] = S.substr(start, tmp_cnt);
+
+    }
+
+    for(int i = cnt - 1; i >= 0; i--){
+        // 연산자 우선순위 때문에 괄호를 쳐줘야 함 
+        if((i & 1) == 1)
+            cout << answer[i] << " ";
+    }
+
+    return 0;
+}
+
+```
