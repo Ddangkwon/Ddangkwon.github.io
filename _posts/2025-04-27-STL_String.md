@@ -195,5 +195,32 @@ string s(c);
 
 
 ```cpp
+#include <iostream>
+#include <string>
 
+using namespace std;
+
+int main(){
+
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    
+    string S, T;
+    // a
+    cin >> S >> T;
+
+    int idx, subword_len = T.length();
+
+    // b, c
+    idx = S.find(T);
+    while(idx >= 0){
+        S.erase(idx, subword_len);
+        idx = S.find(T);
+    }
+
+    cout << S << '\n';
+
+    return 0;
+}
 ```
