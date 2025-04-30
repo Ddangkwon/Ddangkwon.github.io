@@ -92,7 +92,7 @@ int main() {
 
 ### 문자열 검색
 
-- `find(string)`: 해당 문자열이 처음 등장하는 위치 반환, 없으면 string::npos 반환
+- `find(string)`: 해당 문자열이 처음 등장하는 위치 반환, 없으면 string::npos 반환 (string::npos 는 size_type 으로 정의된 특수 값으로 -1 의 상수값을 의미)
 - `rfind(string)`: 마지막 등장 위치 반환
 - `substr(pos, len)`: pos부터 len 길이만큼 부분 문자열 반환
 
@@ -123,6 +123,7 @@ s.erase(1, 2); // "a123def"
 ### 문자열 찾기
 
 ```cpp
+// string::npos = -1
 string s = "abcdefg";
 size_t pos = s.find("cde");
 if (pos != string::npos) {
