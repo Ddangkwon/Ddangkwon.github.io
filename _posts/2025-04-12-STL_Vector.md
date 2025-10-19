@@ -4,7 +4,7 @@ title : STL_Vector
 comments : true
 categories : 
 - CodingTest
-tags : [CodingTest]
+tags : [CodingTest, STL]
 ---
 
 # STL_Vector 

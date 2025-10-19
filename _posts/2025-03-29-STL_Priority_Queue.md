@@ -4,7 +4,7 @@ title : STL_Priority_Queue
 comments : true
 categories : 
 - CodingTest
-tags : [CodingTest]
+tags : [CodingTest, STL]
 ---
 # STL_Priority_Queue
 
