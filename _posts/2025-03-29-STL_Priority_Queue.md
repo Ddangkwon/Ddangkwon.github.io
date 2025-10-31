@@ -4,7 +4,7 @@ title : STL_Priority_Queue
 comments : true
 categories : 
 - CodingTest
-tags : [CodingTest, STL]
+tags : [CodingTest, STL, Container]
 ---
 
 # 개요
@@ -276,7 +276,7 @@ int main() {
 }
 ```
 
-## 2️⃣ Dijkstra 최단경로
+## Dijkstra 최단경로
 
 ```cpp
 #include <iostream>
