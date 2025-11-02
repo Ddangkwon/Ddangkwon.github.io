@@ -47,17 +47,18 @@ tags : [CodingTest, Algorithm]
 ## 4. C++ 기본 구현 코드
 
 ```cpp
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 struct Edge {
-    int to;
-    int cost;
+    int to; // 정점
+    int cost; // 간선 가중치 (큐에서 사용할 때는 누적 가중치가 된다)
 };
 
+// 우선순위 큐 비교자 (Min-Heap)
 struct cmp {
-    bool operator()(const pair<int,int>& a, const pair<int,int>& b) const {
-        return a.second > b.second; // 거리 작은 것이 우선순위 높음
+    bool operator()(const Edge& a, const Edge& b) const {
+        return a.cost > b.cost; // cost가 작은 Edge가 더 높은 우선순위
     }
 };
 
@@ -67,7 +68,7 @@ int main() {
 
     int n, m;
     cin >> n >> m; // 정점, 간선 개수
-
+    
     vector<vector<Edge>> graph(n);
     for (int i = 0; i < m; ++i) {
         int u, v, w;
@@ -78,24 +79,23 @@ int main() {
 
     const int INF = 1e9;
     vector<int> dist(n, INF);
-    priority_queue<pair<int,int>, vector<pair<int,int>>, cmp> pq;
+    priority_queue<Edge, vector<Edge>, cmp> pq; // Edge 구조체 기반 큐
 
     int start = 0;
     dist[start] = 0;
     pq.push({start, 0});
 
     while (!pq.empty()) {
-        auto [u, cost] = pq.top();
+        Edge cur = pq.top();
         pq.pop();
 
-        if (cost > dist[u]) continue;
+        if (cur.cost > dist[cur.to]) continue;
 
-        for (auto &e : graph[u]) {
-            int next = e.to;
-            int nextCost = cost + e.cost;
-            if (nextCost < dist[next]) {
-                dist[next] = nextCost;
-                pq.push({next, nextCost});
+        for (auto &next : graph[cur.to]) {
+            int newCost = cur.cost + next.cost;
+            if (newCost < dist[next.to]) {
+                dist[next.to] = newCost;
+                pq.push({next.to, newCost});
             }
         }
     }
@@ -106,6 +106,7 @@ int main() {
 
     return 0;
 }
+
 ```
 
 ---
