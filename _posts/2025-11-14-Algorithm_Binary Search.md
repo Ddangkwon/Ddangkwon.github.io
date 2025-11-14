@@ -1,40 +1,35 @@
 ---
 layout : post
-title : Algorithm_Prefix Sum
+title : Algorithm_Binary Search
 comments : true
 categories : 
 - CodingTest
 tags : [CodingTest, Algorithm]
 ---
 
-# Algorithm_Prefix Sum
+# Algorithm_Binary Search
+
 
 # 개요
 
-**Prefix Sum(누적 합)** 은 배열의 부분합을 빠르게 계산하기 위한 대표적인 전처리 기법이다.  
-한 번의 전처리로 **모든 구간 합**을 O(1)에 계산할 수 있어, 완전탐색 O(N²) 문제를 O(N)으로 줄인다.
+**Binary Search(이진 탐색)** 은 **정렬된 배열 또는 단조성을 가진 함수**에서 특정 값을 빠르게 찾는 알고리즘이다.  
+단순 선형 탐색이 O(N) 인 반면, 이진 탐색은 **O(log N)** 으로 동작한다.
 
 ---
 
-# 기본 개념
+# 기본 원리
 
-배열 **A[1..N]** 에 대해 다음과 같이 누적합 배열 **P[1..N]** 을 정의한다.
-
-$$
-P[i] = A[1] + A[2] + ... + A[i]
-$$
-
-즉, **P[i] = P[i-1] + A[i]**, 단 P[0] = 0 으로 정의한다.
-
-이때 구간 [L, R]의 합은 다음처럼 O(1)에 계산된다.
-
-$$
-sum(L, R) = P[R] - P[L-1]
-$$
+1. 탐색 구간의 시작(`low`)과 끝(`high`)을 지정한다.  
+2. 중간 인덱스(`mid = (low + high) / 2`)를 계산한다.  
+3. `mid` 위치의 값과 목표값을 비교한다.  
+   - 목표값이 작으면 `high = mid - 1`
+   - 목표값이 크면 `low = mid + 1`
+4. 같으면 탐색 종료.  
+5. 값이 없으면 `low > high` 시점에 종료된다.
 
 ---
 
-# 예제 코드 (기본 1차원)
+# 예시 코드 (정확한 값 탐색)
 
 ```cpp
 #include <bits/stdc++.h>
@@ -44,113 +39,147 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int N, Q;
-    cin >> N >> Q;
-    vector<int> A(N+1), P(N+1, 0);
+    int n, target;
+    cin >> n >> target;
+    vector<int> arr(n);
+    for (int i = 0; i < n; ++i) cin >> arr[i];
+    sort(arr.begin(), arr.end());
 
-    for (int i = 1; i <= N; ++i) {
-        cin >> A[i];
-        P[i] = P[i-1] + A[i];
+    int low = 0, high = n - 1;
+    bool found = false;
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (arr[mid] == target) {
+            found = true;
+            break;
+        }
+        else if (arr[mid] < target)
+            low = mid + 1;
+        else
+            high = mid - 1;
     }
 
-    while (Q--) {
-        int L, R;
-        cin >> L >> R;
-        cout << P[R] - P[L-1] << "\n";
-    }
-    return 0;
+    cout << (found ? "YES" : "NO") << "\n";
 }
 ```
 
 ---
 
-# 2차원 Prefix Sum
+# STL 이진 탐색 함수
 
-2차원 배열에서도 동일 개념을 확장할 수 있다.
+C++ STL 은 이진 탐색을 위한 다양한 함수들을 제공한다.  
+모두 `<algorithm>` 헤더에 정의되어 있다.
 
-$$
-S[y][x] = A[y][x] + S[y-1][x] + S[y][x-1] - S[y-1][x-1]
-$$
+| 함수 | 반환 | 설명 |
+|------|------|------|
+| `binary_search(begin, end, val)` | bool | 존재 여부 확인 |
+| `lower_bound(begin, end, val)` | iterator | `val` 이상이 처음 나오는 위치 |
+| `upper_bound(begin, end, val)` | iterator | `val` 초과가 처음 나오는 위치 |
+| `equal_range(begin, end, val)` | pair | [lower_bound, upper_bound) 구간 반환 |
 
-구간합([y1,x1]~[y2,x2])은 다음처럼 구한다.
+---
 
-$$
-sum = S[y2][x2] - S[y1-1][x2] - S[y2][x1-1] + S[y1-1][x1-1]
-$$
+# 예시: lower_bound / upper_bound
 
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    vector<int> v = {1, 2, 2, 2, 3, 5, 7};
+    int x = 2;
 
-    int N, M;
-    cin >> N >> M;
-    vector<vector<int>> A(N+1, vector<int>(N+1));
-    vector<vector<int>> S(N+1, vector<int>(N+1, 0));
+    auto lb = lower_bound(v.begin(), v.end(), x); // 첫 2의 위치
+    auto ub = upper_bound(v.begin(), v.end(), x); // 마지막 2 다음 위치
 
-    for (int i = 1; i <= N; ++i) {
-        for (int j = 1; j <= N; ++j) {
-            cin >> A[i][j];
-            S[i][j] = A[i][j] + S[i-1][j] + S[i][j-1] - S[i-1][j-1];
+    cout << "lower_bound index: " << (lb - v.begin()) << "\n";
+    cout << "upper_bound index: " << (ub - v.begin()) << "\n";
+    cout << "count of 2 = " << (ub - lb) << "\n";
+}
+```
+
+출력:
+```
+lower_bound index: 1
+upper_bound index: 4
+count of 2 = 3
+```
+
+---
+
+# 예시: 조건을 만족하는 최솟값 / 최댓값 찾기
+
+이진 탐색은 단순 값 탐색뿐 아니라 **단조성(boolean monotonic)** 을 가지는 조건에 대해 경계값을 찾는 데 자주 쓰인다.
+
+예시: `x^2 >= N` 을 만족하는 최소 x 찾기
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+using ll = long long;
+
+int main() {
+    ll N; cin >> N;
+    ll low = 0, high = N, ans = -1;
+    while (low <= high) {
+        ll mid = (low + high) / 2;
+        if (mid * mid >= N) {
+            ans = mid;
+            high = mid - 1;
+        } else {
+            low = mid + 1;
         }
     }
-
-    while (M--) {
-        int y1, x1, y2, x2;
-        cin >> y1 >> x1 >> y2 >> x2;
-        int ans = S[y2][x2] - S[y1-1][x2] - S[y2][x1-1] + S[y1-1][x1-1];
-        cout << ans << "\n";
-    }
+    cout << ans << "\n"; // sqrt(N)의 올림값
 }
 ```
 
 ---
 
-# Prefix Sum 변형 응용
+# 응용 패턴
 
-## 1️⃣ 차이 배열(Difference Array)
-
-구간 업데이트를 빠르게 수행할 때 사용한다.
-
-예: `[L, R]` 구간에 +v 를 더할 때
-
-```cpp
-diff[L] += v;
-diff[R+1] -= v;
-```
-그리고 마지막에 누적합 한 번 수행:
-```cpp
-for (int i = 1; i <= N; ++i)
-    arr[i] = arr[i-1] + diff[i];
-```
+| 패턴 | 설명 |
+|------|------|
+| **정렬 배열에서 값 찾기** | 기본 이진 탐색 |
+| **정답이 단조적인 문제** | parametric search(파라메트릭 서치) |
+| **배열 내 특정 조건 만족 구간 찾기** | lower_bound / upper_bound |
+| **함수의 경계 탐색** | 연속값 함수에서 최소/최대 경계값 계산 |
+| **시간·거리·속도 등 이분 탐색** | Ex: 최소 시간, 최소 거리 등 문제 |
 
 ---
 
-## 2️⃣ 부분합이 K인 구간 개수 세기
+# Parametric Search (파라메트릭 서치)
 
-누적합 배열을 이용해 빠르게 조건을 만족하는 구간 수를 찾을 수 있다.
+**이진 탐색을 이용한 최적화 문제 풀이 기법**으로,  
+“**조건을 만족하는 최솟값(혹은 최댓값)**” 을 구하는 형태로 자주 사용된다.
+
+예제: 나무 자르기 문제 (BOJ 2805)
 
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 
 int main() {
-    int N, K; cin >> N >> K;
-    vector<long long> a(N+1), prefix(N+1, 0);
-    for (int i = 1; i <= N; ++i) {
-        cin >> a[i];
-        prefix[i] = prefix[i-1] + a[i];
-    }
+    int N; ll M;
+    cin >> N >> M;
+    vector<ll> tree(N);
+    for (auto &t : tree) cin >> t;
+    ll low = 0, high = *max_element(tree.begin(), tree.end());
+    ll ans = 0;
 
-    unordered_map<long long,int> cnt;
-    long long ans = 0;
-    cnt[0] = 1; // prefix[0]
-    for (int i = 1; i <= N; ++i) {
-        ans += cnt[prefix[i] - K];
-        cnt[prefix[i]]++;
+    while (low <= high) {
+        ll mid = (low + high) / 2;
+        ll sum = 0;
+        for (ll h : tree) if (h > mid) sum += (h - mid);
+
+        if (sum >= M) { // 더 많이 잘랐으면 절단 높이를 높인다.
+            ans = mid;
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
     }
     cout << ans << "\n";
 }
@@ -162,10 +191,9 @@ int main() {
 
 | 연산 | 복잡도 |
 |------|--------|
-| 누적합 계산 | O(N) |
-| 구간합 계산 | O(1) |
-| 2차원 누적합 전처리 | O(N²) |
-| 2차원 구간합 계산 | O(1) |
+| 이진 탐색 | O(log N) |
+| lower_bound / upper_bound | O(log N) |
+| parametric search | O(log N × f(N)) |
 
 ---
 
@@ -173,15 +201,15 @@ int main() {
 
 | 포인트 | 설명 |
 |--------|------|
-| **1. 전처리로 O(1) 쿼리 처리** | P[i] = P[i-1] + A[i] |
-| **2. 구간합 계산 공식** | sum(L,R)=P[R]-P[L-1] |
-| **3. 2차원 확장 가능** | 영역합 계산 가능 |
-| **4. 구간 업데이트는 차이 배열** | diff로 처리 후 누적 |
-| **5. 누적합+해시 조합** | 부분합이 K인 구간 개수 등 다양한 문제 해결 가능 |
+| **1. 정렬 필요** | 이진 탐색은 정렬된 데이터에만 적용 가능 |
+| **2. 중간값 계산 시 오버플로우 주의** | mid = low + (high - low) / 2 |
+| **3. lower/upper_bound 적극 활용** | 경계 탐색 문제에 유용 |
+| **4. Parametric Search** | 조건 만족 최소/최대값 탐색 시 강력 |
+| **5. O(log N)** | 매우 효율적인 탐색 알고리즘 |
 
 ---
 
 # 마무리
 
-Prefix Sum은 모든 **누적 연산 기반 문제의 기본 도구**이다.  
-누적합 배열은 단순하지만 강력하며, 슬라이딩 윈도우·DP 등과 결합하면 효율적인 풀이를 구성할 수 있다.
+Binary Search 는 단순 탐색부터 최적화 문제까지 폭넓게 사용된다.  
+특히 **단조성을 가진 조건**을 잘 정의하면, 거의 모든 “최소/최대” 문제를 해결할 수 있다.
