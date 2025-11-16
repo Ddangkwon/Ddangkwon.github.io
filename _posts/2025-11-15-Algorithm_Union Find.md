@@ -43,7 +43,8 @@ using namespace std;
 vector<int> parent;
 
 int find_parent(int x) {
-    if (parent[x] == x) return x; // 루트 노드
+    if (parent[x] == x) 
+        return x; // 루트 노드
     return parent[x] = find_parent(parent[x]); // 경로 압축(Path Compression)
 }
 
