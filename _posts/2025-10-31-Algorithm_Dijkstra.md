@@ -88,8 +88,9 @@ int main() {
     while (!pq.empty()) {
         Edge cur = pq.top();
         pq.pop();
-
-        if (cur.cost > dist[cur.to]) continue;
+        // 현재 가중치가 작은 경우만 dist 에 업데이트 할 수 있도록 함
+        if (cur.cost > dist[cur.to]) 
+            continue;
 
         for (auto &next : graph[cur.to]) {
             int newCost = cur.cost + next.cost;
