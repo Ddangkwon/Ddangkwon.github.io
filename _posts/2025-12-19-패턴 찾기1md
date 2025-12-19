@@ -1,0 +1,209 @@
+---
+layout : post
+title : 패턴 찾기1
+comments : true
+categories : 
+- CodingTest
+tags : [CodingTest, Hash]
+---
+
+# 패턴 찾기1
+
+## 문제
+
+한 변의 길이가 N으로 된 2차원 테이블 A[][]의 각 셀에 0 또는 1이 채워져 있다.
+
+이 테이블의 임의의 위치에서 가로 세로의 길이가 모두 M인 부분을
+
+복사하여 저장한 테이블을 B[][]라고 하자.
+
+ 
+
+N, A[][], M과 B[][]가 주어질 때, B[][]가 A[][]의 어느 위치의 일부분이었는지
+
+찾는 프로그램을 작성해보자.
+
+ 
+
+사용자는 다음 두 함수를 구현한다.
+
+- 1. void init(int n, int ap[][1000], int m):
+
+초기 2차원 테이블 크기 n과 내역 A[][], 그리고 B[][]의 크기 m이 주어진다.
+
+- 2. int query(int bp[][20]):
+
+알아보고자 하는 2차원 테이블 B[][]이 주어진다.
+
+A[][]에서 B[][]를 찾고 찾은 구간의 가장 상단, 가장 왼쪽 셀의 행번호(row) 열번호(col)를
+
+row * n + col로 계산하여 반환한다. 
+
+
+
+ 
+
+[제약조건]
+
+- 1. Test case : 50개
+
+- 2. 각 case당 쿼리 : 10 ~ 1000개
+
+- 3. N(20 <= N <= 1000)
+
+- 4. M(5 <= M <= 20)
+
+## 풀이
+
+```cpp
+#include <iostream>
+#include <cstring>
+#include <vector>
+
+// user.cpp
+
+#define PII pair<int, int>
+#define MOD 1 << 16
+
+using namespace std;
+int N, M;
+vector<PII> hash_table[MOD];
+
+int get_code(int r, int c)
+{
+    int code = 0;
+
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            // 16개의 값을 총 16비트 값에 채워넣음
+            code = code * 2 + A[r + i][c + j];
+        }
+    }
+
+    return code;
+}
+
+void init(int n, int ap[][1000], int m)
+{
+    N = n, M = m;
+    int code = 0;
+    for(int i = 0; i < MOD; i++)
+        hash_table[i].clear();
+        
+    memcpy(A, ap, sizeof(A));
+
+    for(int i = 0; i <= N - M; i++){
+        for(int j = 0; j <= N - M; j++){
+            code = get_code(i, j);
+            hash_table[code].push_back({i, j});
+        }
+    }
+}
+
+int check_validity(int r, int c)
+{
+    for(int i = 0; i < M; i++){
+        for(int j = 0; j < M; j++){
+            if(A[r + i][c + j] != B[i][j])
+                return 0;
+        }
+    }
+
+    return 1;
+}
+
+int query(int bp[][20])
+{
+    int row = 0, col = 0;
+    
+    memcpy(B, bp, sizeof(B));
+    int table_idx = 0;
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j < 4; j++){
+            table_idx = table_idx * 2 + B[i][j];
+        }
+    }
+
+    for(auto &data : hash_table[table_idx]){
+        int srow = data.first, scol = data.second;
+        if(check_validity(srow, scol)){
+            row = srow, col = scol;
+        }
+    }
+
+
+    return row * N + col;
+}
+```
+
+```cpp
+// main.cpp
+#ifndef _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
+#endif // _CRT_SECURE_NO_WARNINGS
+ 
+#include <stdio.h>
+static int AN, A[1000][1000], BM, B[20][20];
+
+static unsigned int seed;
+static unsigned int myRand(){
+    seed = 22695477 * seed + 1;
+    return seed>>16;
+}
+ 
+extern void init(int, int[][1000], int);
+extern int query(int[][20]);
+ 
+static void makeArr(){
+    int i, j;
+    for(i=0;i<AN;++i)for(j=0;j<AN;++j){
+        A[i][j] = myRand() & 1;
+    }
+}
+ 
+static int makeBrr(int limit){
+    int r = myRand() % (limit + 1);
+    int c = myRand() % (limit + 1);
+    int i, j, zero = 1;
+    for(i=0;i<BM;++i)for(j=0;j<BM;++j){
+        B[i][j] = A[r+i][c+j];
+        if(B[i][j]) zero = 0;
+    }
+    return zero;
+}
+ 
+static int run(){
+    int limit = AN - BM;
+    int i, j, ret;
+    while(makeBrr(limit));
+    ret = query(B);
+    int userR = ret / AN, userC = ret % AN;
+    if(userR < 0 || userR > limit || userC < 0 || userC > limit)
+        return 0;
+ 
+    for(i=0;i<BM;++i)for(j=0;j<BM;++j){
+        if(B[i][j] != A[userR+i][userC+j]) return 0;
+    }
+    return 100;
+}
+ 
+int main(){
+    //freopen("input.txt", "r", stdin);
+    int TC, i, j, Q;
+    scanf("%d", &TC);
+    for(i=1;i<=TC;++i){
+        scanf("%d %d %u %d", &AN, &BM, &seed, &Q);
+        int total = 0;
+        makeArr();
+        init(AN, A, BM);
+        for(j=1;j<=Q;++j){
+            int sc = run();
+            total += sc;
+        }
+        printf("#case %d : %d\n", i, total / Q);
+    }
+    return 0;
+}
+
+
+```
