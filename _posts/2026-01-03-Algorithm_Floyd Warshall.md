@@ -52,7 +52,9 @@ i → j 최단 경로는
 
 ## 4. 점화식
 
+```
 dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
+```
 
 k를 1부터 N까지 확장하며 적용한다.
 
@@ -95,8 +97,10 @@ int main() {
 
     for(int i = 1; i <= N; i++){
         for(int j = 1; j <= N; j++){
-            if(i == j) dist[i][j] = 0;
-            else dist[i][j] = INF;
+            if(i == j)
+                dist[i][j] = 0;
+            else
+                dist[i][j] = INF;
         }
     }
 
