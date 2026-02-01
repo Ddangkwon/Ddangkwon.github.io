@@ -1,0 +1,363 @@
+<!DOCTYPE html><html lang="ko-KR" data-mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.4.1" /><meta property="og:title" content="STL_Pair" /><meta property="og:locale" content="ko_KR" /><meta name="description" content="임베디드 ASW 엔지니어의 소소한 지식 저장소입니다." /><meta property="og:description" content="임베디드 ASW 엔지니어의 소소한 지식 저장소입니다." /><link rel="canonical" href="/posts/STL_Pair/" /><meta property="og:url" content="/posts/STL_Pair/" /><meta property="og:site_name" content="DK’s Software Engineering Knowledge Storage" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2025-10-18T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="STL_Pair" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="k9n3TqutGkNvqf7uv9HP04BF1yRBxsowePxu32o6gBk" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-11-02T10:51:49+09:00","datePublished":"2025-10-18T00:00:00+09:00","description":"임베디드 ASW 엔지니어의 소소한 지식 저장소입니다.","headline":"STL_Pair","mainEntityOfPage":{"@type":"WebPage","@id":"/posts/STL_Pair/"},"url":"/posts/STL_Pair/"}</script><title>STL_Pair | DK's Software Engineering Knowledge Storage</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="DK's Software Engineering Knowledge Storage"><meta name="application-name" content="DK's Software Engineering Knowledge Storage"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/green_galaxy.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">DK's Software Engineering Knowledge Storage</a></div><div class="site-subtitle font-italic">Software Engineering Knowledge Repo.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>홈</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>카테고리</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>태그</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>아카이브</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>정보</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> 홈 </a> </span> <span>STL_Pair</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> 포스트</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="검색..."> </span> <span id="search-cancel" >취소</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>STL_Pair</h1><div class="post-meta text-muted"> <span> 게시 <em class="" data-ts="1760713200" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2025-10-18 </em> </span> <span> 업데이트 <em class="" data-ts="1762048309" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2025-11-02 </em> </span><div class="d-flex justify-content-between"> <span> By <em> <a href="https://twitter.com/username">DK</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1677 단어"> <em>9 분</em>읽는 시간</span></div></div></div><div class="post-content"><h1 id="pair-stl-개요">Pair (STL) 개요</h1><h1 id="개요">개요</h1><p><strong>pair</strong> 는 두 개의 값을 하나의 단위로 묶는 <strong>STL 컨테이너 어댑터(Container Adapter)</strong> 이다. 서로 다른 타입을 조합할 수 있고, 가벼운 레코드 레벨 구조로 쓰인다. <strong>정렬</strong>, <strong>우선순위 큐(priority_queue)</strong>, <strong>map</strong>, <strong>unordered_map</strong> 에서 보조 키로 자주 쓰인다.</p><hr /><h1 id="헤더와-기본-선언">헤더와 기본 선언</h1><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;utility&gt;</span><span class="c1">   // pair</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">p1</span><span class="p">;</span>                <span class="c1">// 기본 생성. first=0, second=""</span>
+    <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s">"seven"</span><span class="p">);</span>    <span class="c1">// 생성자</span>
+    <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">p3</span> <span class="o">=</span> <span class="n">make_pair</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s">"three"</span><span class="p">);</span> <span class="c1">// make_pair</span>
+    <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">p4</span><span class="p">{</span><span class="mi">10</span><span class="p">,</span> <span class="s">"ten"</span><span class="p">};</span>     <span class="c1">// 중괄호 초기화(C++11+)</span>
+
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">" / "</span> <span class="o">&lt;&lt;</span> <span class="n">p2</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// 7 / seven</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>포인트</p><ul><li><strong>make_pair</strong> 는 템플릿 인자 추론을 위해 유용하다.<li>C++11 이후 <strong>중괄호 초기화</strong>가 가장 간단하다.</ul><hr /><h1 id="값-접근과-수정">값 접근과 수정</h1><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">double</span><span class="o">&gt;</span> <span class="n">p</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">};</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">first</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="n">p</span><span class="p">.</span><span class="n">second</span> <span class="o">=</span> <span class="mf">6.28</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">", "</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// 2, 6.28</span>
+<span class="p">}</span>
+</pre></table></code></div></div><hr /><h1 id="구조적-바인딩structured-binding과-tie">구조적 바인딩(Structured Binding)과 tie</h1><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;utility&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;tuple&gt;</span><span class="c1">   // tie</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;</span> <span class="n">get_user</span><span class="p">()</span> <span class="p">{</span> <span class="k">return</span> <span class="p">{</span><span class="mi">42</span><span class="p">,</span> <span class="s">"alice"</span><span class="p">};</span> <span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 구조적 바인딩(C++17)</span>
+    <span class="k">auto</span> <span class="p">[</span><span class="n">id</span><span class="p">,</span> <span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">name</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+
+    <span class="c1">// tie (C++11)</span>
+    <span class="kt">int</span> <span class="n">i</span><span class="p">;</span> <span class="n">string</span> <span class="n">s</span><span class="p">;</span>
+    <span class="n">tie</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_user</span><span class="p">();</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">i</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">s</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>구조적 바인딩은 가독성이 좋다. 구 표준 호환이 필요하면 <strong>tie</strong> 를 쓴다.</p><hr /><h1 id="비교-연산과-정렬-규칙">비교 연산과 정렬 규칙</h1><p><strong>pair</strong> 는 사전식 비교(lexicographical order)를 지원한다.</p><p>규칙</p><ul><li>먼저 <strong>first</strong> 를 비교한다.<li><strong>first</strong> 가 같으면 <strong>second</strong> 를 비교한다.</ul><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">//vector&lt;pair&lt;int,int&gt;&gt; v = {{2,3}, {1,5}, {1,2}, {2,1}};</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// 사전식 오름차순</span>
+    <span class="c1">// 결과: (1,2), (1,5), (2,1), (2,3)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">x</span> <span class="o">:</span> <span class="n">v</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"("</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">","</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">") "</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><ul><li>내림차순은 비교자 사용</ul><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">cmp_desc</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">a</span><span class="p">,</span> <span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="k">const</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">first</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">first</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">first</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">.</span><span class="n">second</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">},</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">}};</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">v</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">v</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">cmp_desc</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">x</span> <span class="o">:</span> <span class="n">v</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"("</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">","</span> <span class="o">&lt;&lt;</span> <span class="n">x</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">") "</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><hr /><h1 id="priority_queue-에서의-pair">priority_queue 에서의 pair</h1><p>기본 priority_queue 는 <strong>최대 힙(max-heap)</strong> 이다. pair 는 first 기준으로, 같으면 second 기준으로 비교한다.</p><p><strong>최소 힙(min-heap)</strong> 으로 쓰려면 greater 사용</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span>
+                   <span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="p">,</span>
+                   <span class="n">greater</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span> <span class="n">pq</span><span class="p">;</span> <span class="c1">// Min-Heap</span>
+
+    <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">});</span>
+    <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">});</span>
+    <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">});</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">t</span> <span class="o">=</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">();</span> <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">","</span> <span class="o">&lt;&lt;</span> <span class="n">t</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="c1">// 출력: 3,7 -&gt; 3,9 -&gt; 5,1</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>Dijkstra 에서 흔히 <strong>(거리, 정점)</strong> 형태로 사용한다.</p><hr /><h1 id="map-과-pair">map 과 pair</h1><p><strong>map&lt;Key, T&gt;</strong> 에서 <strong>value_type</strong> 은 <strong>pair&lt;const Key, T&gt;</strong> 이다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="n">freq</span><span class="p">;</span>
+    <span class="n">freq</span><span class="p">[</span><span class="s">"apple"</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">freq</span><span class="p">[</span><span class="s">"banana"</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="k">auto</span> <span class="o">&amp;</span><span class="n">kv</span> <span class="o">:</span> <span class="n">freq</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// kv: pair&lt;const string, int&gt;</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">kv</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">" -&gt; "</span> <span class="o">&lt;&lt;</span> <span class="n">kv</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><strong>vector&lt;pair&lt;…»</strong> 로 데이터를 모은 뒤 <strong>map</strong> 으로 옮기는 패턴</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">P</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">v</span> <span class="o">=</span> <span class="p">{{</span><span class="s">"a"</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="s">"b"</span><span class="p">,</span><span class="mi">5</span><span class="p">},</span> <span class="p">{</span><span class="s">"a"</span><span class="p">,</span><span class="mi">3</span><span class="p">}};</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">mp</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">e</span> <span class="o">:</span> <span class="n">v</span><span class="p">)</span> <span class="n">mp</span><span class="p">[</span><span class="n">e</span><span class="p">.</span><span class="n">first</span><span class="p">]</span> <span class="o">+=</span> <span class="n">e</span><span class="p">.</span><span class="n">second</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">kv</span> <span class="o">:</span> <span class="n">mp</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">kv</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">":"</span> <span class="o">&lt;&lt;</span> <span class="n">kv</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><hr /><h1 id="unordered_map-에서-pair-를-키로-쓰기">unordered_map 에서 pair 를 키로 쓰기</h1><p>표준에는 <strong>pair</strong> 의 해시가 기본 제공되지 않는다. <strong>사용자 정의 해시(Hash Function)</strong> 가 필요하다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="k">struct</span> <span class="nc">pair_hash</span> <span class="p">{</span>
+    <span class="kt">size_t</span> <span class="k">operator</span><span class="p">()(</span><span class="k">const</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;&amp;</span> <span class="n">p</span><span class="p">)</span> <span class="k">const</span> <span class="k">noexcept</span> <span class="p">{</span>
+        <span class="c1">// 간단한 조합 (Xor + shift). 충돌 분산을 위해 해시 합성 권장.</span>
+        <span class="k">return</span> <span class="n">hash</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">p</span><span class="p">.</span><span class="n">first</span><span class="p">)</span> <span class="o">^</span> <span class="p">(</span><span class="n">hash</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()(</span><span class="n">p</span><span class="p">.</span><span class="n">second</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="kt">int</span><span class="p">,</span> <span class="n">pair_hash</span><span class="o">&gt;</span> <span class="n">um</span><span class="p">;</span>
+    <span class="n">um</span><span class="p">[{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="n">um</span><span class="p">[{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">}]</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">um</span><span class="p">[{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">}]</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span> <span class="c1">// 10</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>주의</p><ul><li><strong>noexcept</strong> 로 표시하면 컨테이너 예외 보장을 돕는다.<li>더 견고한 해시를 원하면 <strong>boost::hash</strong> 또는 커스텀 해시 합성 함수를 사용한다.</ul><hr /><h1 id="make_pair-vs-중괄호-초기화">make_pair vs 중괄호 초기화</h1><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="k">auto</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">make_pair</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>  <span class="c1">// 타입 추론</span>
+<span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">p2</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>     <span class="c1">// 명시적 타입 + 중괄호</span>
+</pre></table></code></div></div><p>C++14 이후에는 <strong>중괄호 초기화</strong>가 가독성이 좋아 선호된다. 템플릿 인자 추론이 필요한 컨텍스트에서는 <strong>make_pair</strong> 가 유용하다.</p><hr /><h1 id="move-와-piecewise_construct">move 와 piecewise_construct</h1><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">k</span> <span class="o">=</span> <span class="s">"key"</span><span class="p">;</span>
+    <span class="n">string</span> <span class="n">v</span> <span class="o">=</span> <span class="s">"value"</span><span class="p">;</span>
+    <span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">make_pair</span><span class="p">(</span><span class="n">move</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">move</span><span class="p">(</span><span class="n">v</span><span class="p">));</span> <span class="c1">// 이동 시도</span>
+
+    <span class="c1">// map 에 복잡한 생성자 인자를 전달할 때</span>
+    <span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="n">pair</span><span class="o">&lt;</span><span class="n">string</span><span class="p">,</span> <span class="n">string</span><span class="o">&gt;&gt;</span> <span class="n">mp</span><span class="p">;</span>
+    <span class="n">mp</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">piecewise_construct</span><span class="p">,</span>
+                  <span class="n">forward_as_tuple</span><span class="p">(),</span>
+                  <span class="n">forward_as_tuple</span><span class="p">(</span><span class="s">"A"</span><span class="p">,</span> <span class="s">"B"</span><span class="p">));</span> <span class="c1">// value의 pair를 직접 생성</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p><strong>piecewise_construct</strong> 는 pair 내부 멤버를 <strong>각각의 생성자 인자 집합으로 직접 생성</strong>하게 하여 불필요한 복사를 줄인다.</p><hr /><h1 id="흔한-실수">흔한 실수</h1><ol><li>pair 를 정렬할 때 사전식 비교 규칙을 잊는 실수<li>priority_queue 에서 <strong>Min-Heap</strong> 을 만들지 않고 기본 비교자를 써서 <strong>Max-Heap</strong> 으로 잘못 동작<li>unordered_map 키로 pair 를 쓰면서 <strong>해시를 정의하지 않음</strong><li><strong>pair&lt;int,int&gt;</strong> 와 같이 의미가 불명확할 경우 <strong>구조체</strong> 로 바꾸어 가독성을 높이는 게 낫다</ol><hr /><h1 id="실전-스니펫-모음">실전 스니펫 모음</h1><h2 id="1-좌표-정렬-x-오름차순-y-오름차순"><span class="mr-2">1. 좌표 정렬: x 오름차순, y 오름차순</span><a href="#1-좌표-정렬-x-오름차순-y-오름차순" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">P</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span> <span class="n">pts</span> <span class="o">=</span> <span class="p">{{</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">},{</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">},{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">},{</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">}};</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">pts</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">pts</span><span class="p">.</span><span class="n">end</span><span class="p">());</span> <span class="c1">// (x,y) 오름차순</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">p</span> <span class="o">:</span> <span class="n">pts</span><span class="p">)</span> 
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">first</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span> <span class="o">&lt;&lt;</span> <span class="n">p</span><span class="p">.</span><span class="n">second</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="2-등장-횟수-상위-k개-빈도-값-기준-min-heap"><span class="mr-2">2. 등장 횟수 상위 K개 (빈도, 값) 기준 Min-Heap</span><a href="#2-등장-횟수-상위-k개-빈도-값-기준-min-heap" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">};</span>
+    <span class="n">unordered_map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">cnt</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">:</span> <span class="n">a</span><span class="p">)</span> <span class="n">cnt</span><span class="p">[</span><span class="n">x</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="k">using</span> <span class="n">P</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// (빈도, 값)</span>
+    <span class="n">priority_queue</span><span class="o">&lt;</span><span class="n">P</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">greater</span><span class="o">&lt;</span><span class="n">P</span><span class="o">&gt;&gt;</span> <span class="n">pq</span><span class="p">;</span> <span class="c1">// Min-Heap</span>
+
+    <span class="kt">int</span> <span class="n">K</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="o">&amp;</span><span class="n">kv</span> <span class="o">:</span> <span class="n">cnt</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">({</span><span class="n">kv</span><span class="p">.</span><span class="n">second</span><span class="p">,</span> <span class="n">kv</span><span class="p">.</span><span class="n">first</span><span class="p">});</span>
+        <span class="k">if</span> <span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">pq</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">K</span><span class="p">)</span> <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">ans</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span> <span class="n">ans</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">().</span><span class="n">second</span><span class="p">);</span> <span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span> <span class="p">}</span>
+    <span class="n">reverse</span><span class="p">(</span><span class="n">ans</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">ans</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">x</span> <span class="o">:</span> <span class="n">ans</span><span class="p">)</span> <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s">" "</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="3-그래프-간선-저장"><span class="mr-2">3. 그래프 간선 저장</span><a href="#3-그래프-간선-저장" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">Edge</span> <span class="o">=</span> <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">;</span> <span class="c1">// (to, weight)</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Edge</span><span class="o">&gt;&gt;</span> <span class="n">g</span><span class="p">(</span><span class="n">N</span><span class="p">);</span>
+    <span class="k">auto</span> <span class="n">add</span> <span class="o">=</span> <span class="p">[</span><span class="o">&amp;</span><span class="p">](</span><span class="kt">int</span> <span class="n">u</span><span class="p">,</span> <span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">w</span><span class="p">){</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">u</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">});</span>
+        <span class="n">g</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">push_back</span><span class="p">({</span><span class="n">u</span><span class="p">,</span> <span class="n">w</span><span class="p">});</span>
+    <span class="p">};</span>
+    <span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">);</span> <span class="n">add</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span> <span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></table></code></div></div><hr /><h1 id="마무리">마무리</h1><p><strong>pair</strong> 는 두 값을 가볍게 묶어 전달, 정렬, 우선순위 큐, 연관 컨테이너의 값 표현 등 폭넓게 쓰인다. 의미가 불분명해질 때는 <strong>구조체</strong> 로 전환해 명시성을 확보한다. <strong>pair</strong> 의 비교 규칙, <strong>priority_queue</strong> 와의 조합, <strong>unordered_map</strong> 키 해시 정의 패턴을 익혀두면 실전 활용도가 높다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/codingtest/'>CodingTest</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/codingtest/" class="post-tag no-text-decoration" >CodingTest</a> <a href="/tags/stl/" class="post-tag no-text-decoration" >STL</a> <a href="/tags/container/" class="post-tag no-text-decoration" >Container</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> 이 기사는 저작권자의 <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> 라이센스를 따릅니다.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">공유하기</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=STL_Pair+-+DK%27s+Software+Engineering+Knowledge+Storage&url=%2Fposts%2FSTL_Pair%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=STL_Pair+-+DK%27s+Software+Engineering+Knowledge+Storage&u=%2Fposts%2FSTL_Pair%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=%2Fposts%2FSTL_Pair%2F&text=STL_Pair+-+DK%27s+Software+Engineering+Knowledge+Storage" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="링크 복사하기" data-title-succeed="링크가 복사되었습니다!"> </i> </span></div></div></div><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">최근 업데이트</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Algorithm_Hash/">Algorithm_Hash</a><li><a href="/posts/Algorithm_Floyd-Warshall/">Algorithm_Floyd Warshall</a><li><a href="/posts/%EA%B2%BD%EB%A1%9C-%EC%B0%BE%EA%B8%B0/">경로 찾기</a><li><a href="/posts/Algorithm_Dijkstra/">Algorithm_Dijkstra</a><li><a href="/posts/%EC%83%9D%EB%AA%85%EC%B2%B4-%EB%B6%84%EB%A5%98/">생명체 분류</a></ul></div><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/codingtest/">CodingTest</a> <a class="post-tag" href="/tags/bfs/">BFS</a> <a class="post-tag" href="/tags/simulation/">simulation</a> <a class="post-tag" href="/tags/dp/">DP</a> <a class="post-tag" href="/tags/dfs/">DFS</a> <a class="post-tag" href="/tags/embedded-engineering/">Embedded Engineering</a> <a class="post-tag" href="/tags/algorithm/">Algorithm</a> <a class="post-tag" href="/tags/stl/">STL</a> <a class="post-tag" href="/tags/container/">Container</a> <a class="post-tag" href="/tags/dijkstra/">Dijkstra</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">바로가기</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>관련된 글</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/STL_Deque/"><div class="card-body"> <em class="small" data-ts="1760713200" data-df="YYYY-MM-DD" > 2025-10-18 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>STL_Deque</h3><div class="text-muted small"><p> Pair (STL) 개요 개요 deque(Double-ended queue) 는 양쪽 끝에서 삽입과 삭제가 모두 상수 시간 평균으로 가능한 시퀀스 컨테이너이다. 내부적으로는 세그먼트 블록 배열 + 인덱스 테이블 구조를 사용하여 앞과 뒤에서의 연산이 모두 빠르다. vector 와 달리 앞쪽 연산이 효율적이다. 헤더와 기본 선언 #include...</p></div></div></a></div><div class="card"> <a href="/posts/STL_Set/"><div class="card-body"> <em class="small" data-ts="1760713200" data-df="YYYY-MM-DD" > 2025-10-18 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>STL_Set</h3><div class="text-muted small"><p> Set (STL) 개요 std::set 컨테이너는 중복 없이(unique), 정렬된 상태(sorted) 로 요소를 보관하는 연관 컨테이너(associative container)다. 즉, 값 자체가 키(key)가 되며, 삽입·검색·삭제 등이 모두 로그(logarithmic) 시간 복잡도를 갖는다. 주로 설정값 집합(configuration set),...</p></div></div></a></div><div class="card"> <a href="/posts/STL_MAP/"><div class="card-body"> <em class="small" data-ts="1743174000" data-df="YYYY-MM-DD" > 2025-03-29 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>STL_Map</h3><div class="text-muted small"><p> STL_Map C++ Standard Library map 컨테이너 정리 기본적으로 key, value 값이 있는 파이썬의 dictionary 타입과 유사한 라이브러리 📘 map 개요 헤더 파일: &amp;lt;map&amp;gt; 네임스페이스: std 내부 구조: Red-Black Tree (이진 탐색 트리의 일종) 키 중복: 허용하지 않음...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/STL_Deque/" class="btn btn-outline-primary" prompt="이전 글"><p>STL_Deque</p></a> <a href="/posts/STL_Set/" class="btn btn-outline-primary" prompt="다음 글"><p>STL_Set</p></a></div></div></div><footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0"><div class="footer-left"><p class="mb-0"> © 2026 <a href="https://twitter.com/username">DK</a>. <span data-toggle="tooltip" data-placement="top" title="명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의 Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.">일부 권리 보유</span></p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/codingtest/">CodingTest</a> <a class="post-tag" href="/tags/bfs/">BFS</a> <a class="post-tag" href="/tags/simulation/">simulation</a> <a class="post-tag" href="/tags/dp/">DP</a> <a class="post-tag" href="/tags/dfs/">DFS</a> <a class="post-tag" href="/tags/embedded-engineering/">Embedded Engineering</a> <a class="post-tag" href="/tags/algorithm/">Algorithm</a> <a class="post-tag" href="/tags/stl/">STL</a> <a class="post-tag" href="/tags/container/">Container</a> <a class="post-tag" href="/tags/dijkstra/">Dijkstra</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">새 버전의 콘텐츠를 사용할 수 있습니다.</p><button type="button" class="btn btn-primary" aria-label="Update"> 업데이트 </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">검색 결과가 없습니다.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/ko.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>

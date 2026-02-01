@@ -1,0 +1,1913 @@
+<!DOCTYPE html><html lang="ko-KR" data-mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.4.1" /><meta property="og:title" content="파이썬 중고급문법" /><meta property="og:locale" content="ko_KR" /><meta name="description" content="알고리즘 정리" /><meta property="og:description" content="알고리즘 정리" /><link rel="canonical" href="/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A0%95%EB%A6%AC/" /><meta property="og:url" content="/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A0%95%EB%A6%AC/" /><meta property="og:site_name" content="DK’s Software Engineering Knowledge Storage" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2023-01-03T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="파이썬 중고급문법" /><meta name="twitter:site" content="@twitter_username" /><meta name="google-site-verification" content="k9n3TqutGkNvqf7uv9HP04BF1yRBxsowePxu32o6gBk" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-03-09T21:55:31+09:00","datePublished":"2023-01-03T00:00:00+09:00","description":"알고리즘 정리","headline":"파이썬 중고급문법","mainEntityOfPage":{"@type":"WebPage","@id":"/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A0%95%EB%A6%AC/"},"url":"/posts/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A0%95%EB%A6%AC/"}</script><title>파이썬 중고급문법 | DK's Software Engineering Knowledge Storage</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="DK's Software Engineering Knowledge Storage"><meta name="application-name" content="DK's Software Engineering Knowledge Storage"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/green_galaxy.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">DK's Software Engineering Knowledge Storage</a></div><div class="site-subtitle font-italic">Software Engineering Knowledge Repo.</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>홈</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>카테고리</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>태그</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>아카이브</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>정보</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <a href="https://github.com/" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['',''].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> 홈 </a> </span> <span>파이썬 중고급문법</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> 포스트</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="검색..."> </span> <span id="search-cancel" >취소</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>파이썬 중고급문법</h1><div class="post-meta text-muted"> <span> 게시 <em class="" data-ts="1672671600" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2023-01-03 </em> </span> <span> 업데이트 <em class="" data-ts="1678366531" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2023-03-09 </em> </span><div class="d-flex justify-content-between"> <span> By <em> <a href="https://twitter.com/username">DK</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="6783 단어"> <em>37 분</em>읽는 시간</span></div></div></div><div class="post-content"><h1 id="알고리즘-정리">알고리즘 정리</h1><h2 id="1차원-배열-구간합"><span class="mr-2">1차원 배열 구간합</span><a href="#1차원-배열-구간합" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>일반적인 생각으로 구간합을 계산할 경우 n^2의 시간복잡도가 나타난다.<li>이를 위해 sum 값을 구간합만큼 계산하고 슬라이딩 윈도우처럼 한칸씩 움직이며 새롭게 추가되는 값은 +를 빠지는 값은 -를 하여 sum 값을 업데이트 하고 max 값과 비교한다.<li>이를 통해 시간 복잡도를 n까지 줄일 수 있다.</ul><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>			
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">sum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">k</span><span class="p">);</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">sum</span><span class="o">=</span><span class="n">sum</span><span class="o">+</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="n">res</span><span class="o">=</span><span class="n">sum</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">sum</span><span class="o">=</span><span class="n">sum</span><span class="o">+</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">k</span><span class="p">]);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">sum</span><span class="o">&gt;</span><span class="n">res</span><span class="p">)</span> 
+            <span class="n">result</span><span class="o">=</span><span class="n">sum</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></table></code></div></div><h2 id="재귀함수의-이해"><span class="mr-2">재귀함수의 이해</span><a href="#재귀함수의-이해" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>재귀함수와 스택프레임에 대해서 이해하기 위해서 가장 좋은 예시로 이진수 계산을 재귀로 구현하는 방법이 있다. 우리가 이진수로의 변환을 위해서 2로 숫자를 계속 나눠주고 나머지를 표시하고 최종적으로 몫이 0이 됐을 때 나머지들을 거꾸로 읽어나간다.</p><p>이 때 스택의 개념을 사용할 수 있는데, 스택의 경우 LIFO(Last in First out) 방식을 사용하기 때문이다. 재귀함수가 호출 되는 시점을 기준으로 이전은 스택에 넣기 전, 스택에 넣기 후로 표현할 수 있다. 보통 재귀로 표현하는 경우 이러한 스택의 특징을 활용하는 경우가 많기 때문에 목표하는 동작을 스택에 넣은 후, 즉, 재귀함수를 호출하고 동작을 넣는다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>	
+
+<span class="kt">void</span> <span class="nf">recur</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> 
+		<span class="k">return</span><span class="p">;</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 1101 </span>
+		<span class="n">D</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+		<span class="c1">// recur(1) 1 = &gt; recur(2) 0 = &gt; recur(5) 1 =&gt; recur(11) 1</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="n">x</span><span class="o">%</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// 1011 =&gt; 목표하는 동작</span>
+	<span class="p">}</span>
+<span class="p">}</span>	
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+
+	<span class="n">recur</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="투-포인터-알고리즘"><span class="mr-2">투 포인터 알고리즘</span><a href="#투-포인터-알고리즘" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>리스트에 순차적으로 접근해야 할 때 두 개의 점의 위치를 기록하면서 처리하는 알고리즘<li>주로 단순 Brute Force 방식으로 접근 시 시간 초과가 걸리는 경우 투 포인터를 사용하여 메모리와 시간 효율성을 높이는데 쓴다.</ul><p>포인터의 경우 크게 2가지 방식으로 쓴다.</p><ol><li>앞에서 시작하는 포인터와 끝에서 시작하는 포인터가 어느 한 지점에서 만나고 종료하는 방식<li>빠른 포인터가 느린 포인터 보다 앞서는 방식</ol><p>시간 복잡도의 경우 매 루프마다 항상 두 포인터 중 하나는 1씩 증가하고 각 포인터가 n번 누적 증가하면 종료 =&gt; O(N)</p><p>예시문제 : 공통원소 찾기</p><ol><li>정렬하여 공통원소를 찾기 용이하도록 한다.<li>오름차순으로 정렬된 수열을 투 포인터를 사용해서 공통원소를 검색한다.<li>공통원소를 정답 리스트에 넣고 리턴</ol><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">p1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">p3</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+	
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">a</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+	
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">c</span><span class="p">;</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="n">sort</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">b</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+	<span class="c1">// 두 벡터 모두 정렬 완료</span>
+	<span class="c1">// 투포인터 알고리즘</span>
+	<span class="k">while</span><span class="p">(</span><span class="n">p1</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">&lt;</span> <span class="n">m</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// 공통 원소를 찾았을 때</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="n">c</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">p1</span><span class="o">++</span><span class="p">]);</span>
+			<span class="n">p2</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="c1">//b의 원소가 더 클 경우 p1 포인터 증가</span>
+		<span class="k">else</span> <span class="nf">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span>
+		<span class="p">{</span>
+			<span class="n">p1</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="c1">//a의 원소가 더 클 경우 p2 포인터 증가</span>
+		<span class="k">else</span> 
+			<span class="n">p2</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">p3</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="이분-검색binary-search-알고리즘"><span class="mr-2">이분 검색(Binary Search) 알고리즘</span><a href="#이분-검색binary-search-알고리즘" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>검색할 범위를 절반씩 줄여가며(mid) 목표값을 찾아가는 검색 방법<li>정렬 이후 해당 검생 방법을 사용한다.</ul><p>중간 위치(mid)값을 찾을 때는 (시작 위치 + 종료 위치) /2의 결과가 중간 위치 값 이 중간 위치의 값을 키 값(찾을 데이터)과 비교하여 같다면 검색 종료, 작다면 왼쪽 데이터를 다시 검사, 크다면 오른쪽 데이터를 다시 검사</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">lt</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">rt</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">tmp</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">;</span>
+    <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">);</span>
+    
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tmp</span><span class="p">);</span>
+        <span class="n">a</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span>   
+    <span class="p">}</span>
+    <span class="c1">// 검색에 앞서 정렬 수행</span>
+    <span class="n">sort</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">a</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="n">rt</span><span class="o">=</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">lt</span> <span class="o">&lt;=</span> <span class="n">rt</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">lt</span> <span class="o">+</span> <span class="n">rt</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+        <span class="c1">// 목표값 탐색 완료한 경우</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span><span class="o">==</span><span class="n">key</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="c1">// 중간값이 키 값보다 큰 경우 =&gt; 중간 값이 왼쪽으로 한칸 이동하기 위해 rt = mid - 1</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">mid</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">key</span><span class="p">)</span> 
+            <span class="n">rt</span><span class="o">=</span><span class="n">mid</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="c1">// 중간값이 키 값보다 작은 경우 =&gt; 중간 값이 오른쪽으로 한칸 이동하기 위해 lt = mid + 1</span>
+        <span class="k">else</span> 
+            <span class="n">lt</span><span class="o">=</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></table></code></div></div><h2 id="반올림을-하는-하나의-방법"><span class="mr-2">반올림을 하는 하나의 방법</span><a href="#반올림을-하는-하나의-방법" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>반올림을 수행하려는 타겟 값에 0.5를 더하고 그 값을 (int) 를 붙여 int 형으로 명시적 형변환을 수행한다. =&gt; int 형을 취하면 소수점이 버려지는 성질 활용</p><h2 id="병합정렬-divde-and-conquer"><span class="mr-2">병합정렬, Divde and Conquer</span><a href="#병합정렬-divde-and-conquer" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>분할 정복(divide and conquer) 방법</p><ul><li>문제를 작은 2개의 문제로 분리하고 각각을 해결한 다음, 결과를 모아서 원래의 문제를 해결하는 전략<li>분할 정복 방법은 대개 재귀를 사용하여 구현</ul><p>병합정렬의 단계</p><ol><li>분할(Divide): 입력 배열을 같은 크기의 2개의 부분 배열로 분할한다.<li>정복(Conquer): 부분 배열(소문제)을 정렬한다. 부분 배열의 크기가 충분히 작지 않으면 순환 3. 호출 을 이용하여 다시 분할 정복 방법을 적용한다.<li>결합(Combine): 정렬된 부분 배열들을 하나의 배열에 합병한다.</ol><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">101</span><span class="p">],</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">101</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">divide</span><span class="p">(</span><span class="kt">int</span> <span class="n">lt</span><span class="p">,</span> <span class="kt">int</span> <span class="n">rt</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">mid</span><span class="p">;</span>
+	<span class="kt">int</span> <span class="n">p1</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">p3</span><span class="p">;</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">lt</span><span class="o">&lt;</span><span class="n">rt</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">mid</span><span class="o">=</span><span class="p">(</span><span class="n">lt</span><span class="o">+</span><span class="n">rt</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+		<span class="c1">// 분할 단계 후위 순회의 개념, 자식 노드 2개 모두 동작 이후 부모 노드의 할일 수행</span>
+		<span class="n">divide</span><span class="p">(</span><span class="n">lt</span><span class="p">,</span> <span class="n">mid</span><span class="p">);</span>
+		<span class="n">divide</span><span class="p">(</span><span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">rt</span><span class="p">);</span>
+		<span class="n">p1</span> <span class="o">=</span> <span class="n">lt</span><span class="p">;</span> 
+		<span class="n">p2</span> <span class="o">=</span> <span class="n">mid</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+		<span class="n">p3</span> <span class="o">=</span> <span class="n">lt</span><span class="p">;</span>
+		<span class="c1">// 정복 단계 : 각 배열의 값을 비교하면서 하나의 배열로 통합 및 정렬 수행</span>
+		<span class="k">while</span><span class="p">(</span><span class="n">p1</span> <span class="o">&lt;=</span> <span class="n">mid</span> <span class="o">&amp;&amp;</span> <span class="n">p2</span> <span class="o">&lt;=</span> <span class="n">rt</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">a</span><span class="p">[</span><span class="n">p2</span><span class="p">])</span> 
+				<span class="n">tmp</span><span class="p">[</span><span class="n">p3</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">p1</span><span class="o">++</span><span class="p">];</span>
+			<span class="k">else</span> 
+				<span class="n">tmp</span><span class="p">[</span><span class="n">p3</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">p2</span><span class="o">++</span><span class="p">];</span>
+		<span class="p">}</span>
+		<span class="c1">// 하나의 배열이 포인트가 끝났을 때, 나머지 배열의 값들은 단순 대입 수행</span>
+		<span class="k">while</span><span class="p">(</span><span class="n">p1</span><span class="o">&lt;=</span><span class="n">mid</span><span class="p">)</span> 
+			<span class="n">tmp</span><span class="p">[</span><span class="n">p3</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">p1</span><span class="o">++</span><span class="p">];</span>
+		<span class="k">while</span><span class="p">(</span><span class="n">p2</span><span class="o">&lt;=</span><span class="n">rt</span><span class="p">)</span> 
+			<span class="n">tmp</span><span class="p">[</span><span class="n">p3</span><span class="o">++</span><span class="p">]</span><span class="o">=</span><span class="n">a</span><span class="p">[</span><span class="n">p2</span><span class="o">++</span><span class="p">];</span>
+		<span class="c1">// 결합 단계 : 부분 배열들의 정렬이 끝나면 원본에 덮어쓰기 수행</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="n">lt</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">rt</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">tmp</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+\
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="n">divide</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="순열-조합"><span class="mr-2">순열, 조합</span><a href="#순열-조합" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>기초적인 중복 순열 예제<div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="p">};</span>
+<span class="kt">void</span> <span class="nf">perm</span><span class="p">(</span><span class="kt">int</span> <span class="n">idx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">cnt</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="n">k</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+      <span class="p">}</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+        
+      <span class="k">return</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">arr</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+      <span class="n">perm</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+        
+  <span class="p">}</span>
+  <span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> 
+<span class="p">{</span>
+  <span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">k</span><span class="p">);</span>
+  <span class="n">perm</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><li>중복되지 않는 순열 코드</ul><p>순열 문제로 재귀와 백트래킹을 사용하여 문제를 해결한다.</p><p>중복되는 순열을 출력해해서는 안된다. =&gt; 방문 여부 체크 사전 순 증가하는 순서로 출력해야한다. =&gt; 배열 정렬</p><p>N개의 숫자로 중복되지 않은 순열을 출력하는 문제</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">ansarr</span><span class="p">[</span><span class="mi">9</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="p">};</span>
+<span class="kt">bool</span> <span class="n">isvisited</span><span class="p">[</span><span class="mi">10001</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="nb">false</span><span class="p">,</span> <span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">cnt</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">cnt</span> <span class="o">==</span> <span class="n">M</span><span class="p">)</span>
+	<span class="p">{</span>
+
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">ansarr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+		<span class="p">}</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>	
+		<span class="k">if</span> <span class="p">(</span><span class="n">isvisited</span><span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">==</span> <span class="nb">true</span><span class="p">)</span>
+			<span class="k">continue</span><span class="p">;</span>
+		<span class="k">else</span>
+			<span class="n">ansarr</span><span class="p">[</span><span class="n">cnt</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+		<span class="n">isvisited</span><span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+		<span class="n">dfs</span><span class="p">(</span><span class="n">cnt</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+		<span class="n">isvisited</span><span class="p">[</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">M</span><span class="p">);</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="n">sort</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="n">arr</span> <span class="o">+</span> <span class="p">(</span><span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">));</span>
+	<span class="n">dfs</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>nPr의 순열 구하는 예제</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">arr</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">res</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">isvisited</span><span class="p">[</span><span class="mi">20</span><span class="p">];</span>
+<span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">L</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">r</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span> <span class="n">res</span><span class="p">[</span><span class="n">j</span><span class="p">]);</span>
+		<span class="p">}</span>
+		<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">isvisited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">res</span><span class="p">[</span><span class="n">L</span><span class="p">]</span><span class="o">=</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+				<span class="n">isvisited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+				<span class="n">DFS</span><span class="p">(</span><span class="n">L</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+				<span class="n">isvisited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="n">DFS</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="cout-cin-scanf-printf"><span class="mr-2">cout, cin, scanf, printf</span><a href="#cout-cin-scanf-printf" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>c++ 의 표준 입출력 스트림 cout, cin 함수의 경우 scanf, printf 에 비해 느리다.</p><p>이를 위해</p><p>ios_base::sync_with_stdio(false); cin..tie(NULL);</p><p>코드를 추가하여 C와 C++의 표준 stream의 동기화를 끊고 속도를 높인다. 이렇게 동기화를 끊게 되면 대신 scanf, printf 함수의 사용이 불가해진다.</p><h2 id="구조체와-vector를-이용한-정렬"><span class="mr-2">구조체와 vector를 이용한 정렬</span><a href="#구조체와-vector를-이용한-정렬" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>구조체 생성자를 사용해서 구조체 임시변수를 하나 선언해 놓고 값을 넣은 후 자료구조에 넣어줘야하는 불필요한 작업을 줄인다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span>
+<span class="k">struct</span> <span class="nc">loc_t</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">;</span>
+	<span class="n">loc_t</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">x</span> <span class="o">=</span> <span class="n">a</span><span class="p">;</span>
+		<span class="n">y</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+		<span class="n">z</span> <span class="o">=</span> <span class="n">c</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="kt">bool</span> <span class="k">operator</span><span class="o">&lt;</span><span class="p">(</span><span class="k">const</span> <span class="n">loc_t</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">)</span><span class="k">const</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">y</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">z</span> <span class="o">!=</span> <span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">)</span>
+			<span class="k">return</span> <span class="n">z</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="n">loc_t</span><span class="o">&gt;</span> <span class="n">xyz</span><span class="p">;</span>
+	<span class="n">xyz</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">loc_t</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">));</span>
+	<span class="n">xyz</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">loc_t</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">));</span>
+	<span class="n">xyz</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">loc_t</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">));</span>
+	<span class="n">xyz</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">loc_t</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">));</span>
+	<span class="n">sort</span><span class="p">(</span><span class="n">xyz</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">xyz</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="미로탐색-로직dfs"><span class="mr-2">미로탐색 로직(DFS)</span><a href="#미로탐색-로직dfs" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>미로 탐색에서 경로의 가지수를 모두 체크하는 문제의 경우 DFS를 활용한다. isvisited 라는 체크 배열을 활용 및 해제하는 것 잊지 말기</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span><span class="kt">int</span> <span class="n">map</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,};</span>
+<span class="kt">int</span> <span class="n">isvisited</span><span class="p">[</span><span class="mi">10</span><span class="p">][</span><span class="mi">10</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">,};</span>
+<span class="kt">int</span> <span class="n">dx</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+
+<span class="kt">int</span> <span class="n">cnt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">,</span> <span class="kt">int</span> <span class="n">y</span><span class="p">){</span>	
+
+	<span class="k">if</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">7</span> <span class="o">&amp;&amp;</span> <span class="n">y</span><span class="o">==</span><span class="mi">7</span><span class="p">){</span>
+		<span class="n">cnt</span><span class="o">++</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span><span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+			<span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">nx</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">nx</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">ny</span> <span class="o">&gt;</span> <span class="mi">7</span><span class="p">)</span>
+				<span class="k">continue</span><span class="p">;</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">isvisited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">){</span>
+				<span class="n">isvisited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+				<span class="n">DFS</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">);</span>
+				<span class="n">isvisited</span><span class="p">[</span><span class="n">nx</span><span class="p">][</span><span class="n">ny</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+			<span class="p">}</span>		
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="n">freopen</span><span class="p">(</span><span class="s">"input.txt"</span><span class="p">,</span> <span class="s">"r"</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span> <span class="o">=</span> <span class="mi">7</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">map</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">isvisited</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">DFS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cnt</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>미로 탐색에서 최단거리로 이동하는 문제의 경우 DFS를 활용한다. isvisited 라는 체크 배열을 활용 및 해제하는 것 잊지 말기</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dx</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+<span class="kt">int</span> <span class="n">dis</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">board</span><span class="p">[</span><span class="mi">7</span><span class="p">][</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+
+<span class="kt">void</span> <span class="nf">bfs</span><span class="p">(</span><span class="kt">int</span> <span class="n">y</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">queue</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+
+	<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">));</span>
+	
+	<span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
+		<span class="kt">int</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">().</span><span class="n">first</span><span class="p">;</span>
+		<span class="kt">int</span> <span class="n">cx</span> <span class="o">=</span> <span class="n">q</span><span class="p">.</span><span class="n">second</span><span class="p">().</span><span class="n">second</span><span class="p">;</span>
+		<span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+		<span class="p">{</span>
+			<span class="kt">int</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">cy</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			<span class="kt">int</span> <span class="n">nx</span> <span class="o">=</span> <span class="n">cx</span> <span class="o">+</span> <span class="n">dx</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+			
+			<span class="k">if</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">7</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">7</span> <span class="o">&amp;&amp;</span> <span class="n">board</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> 
+			<span class="p">{</span>
+				<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">));</span>
+				<span class="n">board</span><span class="p">[</span><span class="n">ny</span><span class="p">][</span><span class="n">nx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+				<span class="n">dis</span><span class="p">[</span><span class="n">ny</span><span class="p">][</span><span class="n">nx</span><span class="p">]</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">cy</span><span class="p">][</span><span class="n">cx</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+
+	<span class="k">return</span> <span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+
+
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">7</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> 
+		<span class="p">{</span>
+			<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">board</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	
+	<span class="n">board</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">bfs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+
+	<span class="k">if</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">6</span><span class="p">]</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> 
+		<span class="n">printf</span><span class="p">(</span><span class="s">"-1</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>	
+	<span class="k">else</span> 
+		<span class="nf">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">dis</span><span class="p">[</span><span class="mi">6</span><span class="p">][</span><span class="mi">6</span><span class="p">]);</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="가중치가-있는-최단거리최소-비용문제"><span class="mr-2">가중치가 있는 최단거리(최소 비용)문제</span><a href="#가중치가-있는-최단거리최소-비용문제" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>그래프 DFS(가중치 방향그래프)</ul><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">87654321</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">map</span><span class="p">[</span><span class="mi">30</span><span class="p">][</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">isvisited</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span> <span class="c1">//vertex 들의 방문여부 체크</span>
+
+<span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="p">){</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="o">==</span><span class="n">n</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// 최소비용 업데이트</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">cost</span><span class="p">)</span> 
+			<span class="n">cost</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">isvisited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">isvisited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+			<span class="n">DFS</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">sum</span><span class="o">+</span><span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]);</span>
+			<span class="c1">// 방문 여부 초기화</span>
+			<span class="n">isvisited</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+
+	<span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+		<span class="n">map</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span><span class="o">=</span><span class="n">c</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="n">isvisited</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">DFS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cost</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><ul><li>같은 문제의 다른풀이(vector, pair 자료구조 활용)</ul><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">cost</span><span class="o">=</span><span class="mi">87654321</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span> <span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">map</span><span class="p">[</span><span class="mi">30</span><span class="p">];</span>
+<span class="kt">int</span> <span class="n">isvisited</span><span class="p">[</span><span class="mi">30</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span> <span class="c1">//vertex 들의 방문여부 체크</span>
+
+<span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sum</span><span class="p">)</span>
+<span class="p">{</span>
+	
+	<span class="k">if</span><span class="p">(</span><span class="n">v</span><span class="o">==</span><span class="n">n</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="c1">// 최소비용 업데이트</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">sum</span> <span class="o">&lt;</span> <span class="n">cost</span><span class="p">)</span> 
+			<span class="n">cost</span> <span class="o">=</span> <span class="n">sum</span><span class="p">;</span>
+		<span class="k">return</span><span class="p">;</span>
+	<span class="p">}</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">].</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">isvisited</span><span class="p">[</span><span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">()]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">isvisited</span><span class="p">[</span><span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">()]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+				<span class="n">DFS</span><span class="p">(</span><span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">(),</span> <span class="n">sum</span> <span class="o">+</span> <span class="n">isvisited</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">second</span><span class="p">());</span>
+				<span class="n">isvisited</span><span class="p">[</span><span class="n">map</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">].</span><span class="n">first</span><span class="p">()]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+
+	<span class="kt">int</span> <span class="n">m</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">);</span>
+		<span class="n">map</span><span class="p">[</span><span class="n">a</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">make_pair</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">));</span><span class="c1">// b : 연결정보, c 가중치 값</span>
+	<span class="p">}</span>
+	<span class="n">isvisited</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="n">DFS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">cost</span><span class="p">);</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="조세퍼스"><span class="mr-2">조세퍼스</span><a href="#조세퍼스" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>1번부터 N번까지 N명의 사람이 원을 이루면서 앉아있고, 양의 정수 M(≤ N)이 주어진다. 이제 순서대로 M번째 사람을 제거한다. 한 사람이 제거되면 남은 사람들로 이루어진 원을 따라 이 과정을 계속해 나간다. 이 과정은 N명의 사람이 모두 제거될 때까지 계속된다. 원에서 사람들이 제거되는 순서를 (N, M)-조세퍼스 순열이라고 한다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> 
+<span class="p">{</span>
+
+	<span class="kt">int</span> <span class="n">N</span><span class="p">,</span> <span class="n">K</span><span class="p">;</span>
+	<span class="n">queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">q</span><span class="p">;</span>
+
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">N</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">K</span><span class="p">);</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"&lt;"</span><span class="p">);</span>
+	<span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"1&gt;"</span><span class="p">);</span>
+		<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span>
+	<span class="p">{</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">K</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">q</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+			<span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		<span class="p">}</span>
+		<span class="n">printf</span><span class="p">(</span><span class="s">"%d, "</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+		<span class="n">q</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+		<span class="k">if</span> <span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">printf</span><span class="p">(</span><span class="s">"%d&gt;"</span><span class="p">,</span> <span class="n">q</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+			<span class="k">break</span><span class="p">;</span>
+		<span class="p">}</span>
+
+	<span class="p">}</span>
+	
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+</pre></table></code></div></div><h2 id="최대-힙"><span class="mr-2">최대 힙</span><a href="#최대-힙" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>최대 트리(Max Tree)는 각 노드의 키(Key)값이 (자식 노드가 있다면) 그 자식의 키(Key)값보다 작지 않은(=크거나 같은) 트리</ul><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+	<span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">pq</span><span class="p">;</span>
+	<span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span> 
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> 
+				<span class="n">printf</span><span class="p">(</span><span class="s">"-1</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+			<span class="k">else</span><span class="p">{</span>
+				<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">());</span>
+				<span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="k">else</span> 
+			<span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">num</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="최소-힙"><span class="mr-2">최소 힙</span><a href="#최소-힙" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>최소 트리(Min Tree)는 각 노드의 키(Key)값이 (자식 노드가 있다면) 그 자식의 키(Key)값보다 크지 않은(=작거나 같은) 트리</ul><p>최소힙은 C++에서 다음과 같이 만들 수 있다.</p><p>priority_queue&lt;int, vector<int>, greater<int>&gt; q;</int></int></p><p>혹은 주어진 숫자에 음수를 곱하고 이를 기존 최대 힙에 넣어 최소 힙의 역할을 할 수 있도록 대신하는 방법도 있다.</p><p>최대 힙, 최소 힙 모두 완전 이진 트리 (Complete Binary Tree)</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">num</span><span class="p">;</span>
+	<span class="n">priority_queue</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">pq</span><span class="p">;</span>
+	<span class="c1">// 혹은 최소힙으로 문제 해결</span>
+	<span class="c1">//priority_queue&lt;int, vector&lt;int&gt;, greater&lt;int&gt;&gt; q;</span>
+	<span class="k">while</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="o">&amp;</span><span class="n">num</span><span class="p">);</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+			<span class="k">break</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">num</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">pq</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> 
+				<span class="n">printf</span><span class="p">(</span><span class="s">"-1</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+			<span class="k">else</span>
+			<span class="p">{</span>
+				<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">pq</span><span class="p">.</span><span class="n">top</span><span class="p">());</span>
+				<span class="n">pq</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="k">else</span> 
+			<span class="n">pq</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">num</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="동적-계획법dynamic-programming"><span class="mr-2">동적 계획법(Dynamic Programming)</span><a href="#동적-계획법dynamic-programming" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>동적 계획법(Dynamic programming)이란 복잡한 문제를 간단한 여러 개의 문제로 나누어 푸는 방법을 말한다.</p><p>처음 주어진 문제를 더 작은 문제들로 나눈 뒤 각 조각의 답을 계산하고, 이 답들로부터 원래 문제에 대한 답을 계산해낸다는 점에서 분할 정복(Divide &amp; Conquer)과 비슷하지만, 동적 계획법에서는 쪼개진 작은 문제가 중복되지만, 분할 정복은 절대로 중복될 수가 없다는 차이점이 있다.</p><p>DP 문제의 특성</p><ol><li>Overlapping Subproblem (부분 문제가 겹친다.)<li>Optimal Substructure (최적 부분 구조)</ol><p>DP 문제의 풀이방법 2가지</p><h3 id="1-top-down재귀-메모이제이션memoization"><span class="mr-2">1. Top-Down(재귀, 메모이제이션(Memoization))</span><a href="#1-top-down재귀-메모이제이션memoization" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>큰 문제를 작은 문제로 나눈다. F(n-1), F(n-2)로 나눈다.</p><p>작은 문제를 푼다. F(n-1) + F(n-2)</p><ul><li>코드로 표현<div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">int</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">dy</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> 
+      <span class="k">return</span> <span class="n">dy</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="k">if</span><span class="p">(</span><span class="n">n</span><span class="o">==</span><span class="mi">1</span> <span class="o">||</span> <span class="n">n</span><span class="o">==</span><span class="mi">2</span><span class="p">)</span> 
+      <span class="k">return</span> <span class="n">n</span><span class="p">;</span>
+  <span class="k">else</span> 
+      <span class="c1">// 메모이제이션 기법 사용</span>
+      <span class="k">return</span> <span class="n">dy</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">DFS</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">DFS</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">DFS</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>재귀호출을 하는 방식으로 푼다. 시간 제약이 클 경우 메모이제이션을 사용해서 해결한다.</p></ul><p>** 메모이제이션(Memoization)</p><ul><li>컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, 이전에 계산한 값을 메모리에 저장(배열 등)함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는 기술</ul><h3 id="2-bottom-up"><span class="mr-2">2. Bottom-Up</span><a href="#2-bottom-up" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>문제를 크기가 작은 문제부터 차례대로 쓴다. 문제의 크기를 조금씩 크게 만들면서 문제를 푼다. 작은 문제를 풀면서 큰 문제의 답을 구한다.</p><p>F(n-1) + F(n-2)</p><ul><li>코드로 표현<div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">50</span><span class="p">];</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+  <span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="kt">int</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">cin</span> <span class="o">&gt;&gt;</span> <span class="n">n</span><span class="p">;</span>
+  <span class="n">dy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="n">dy</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+  <span class="p">{</span>
+      <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">];</span>
+  <span class="p">}</span>
+  <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">dy</span><span class="p">[</span><span class="n">n</span><span class="p">];</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>주로, 점화식을 세워서 문제 해결</p><li>예시 문제 2차원 배열의 영역 중 부분 2차원 영역 내 원소 합의 최댓값이 되는 위치의 최댓값 출력하는 문제</ul><p>각 배열 포인트(y, x)에 a[0][0]~a[y][x] 영역의 총합을 저장하는 배열 dy를 선언하고 점화식을 새워 문제를 해결한다.</p><p>dy 배열을 업데이트 하는 점화식</p><p>dy[i][j] = dy[i-1][j] + dy[i][j-1] - dy[i-1][j-1] + a[i][j];</p><p>부분 배열의 총합을 구하는 식</p><p>tmp = dy[i][j] - dy[i-n][j] - dy[i][j-m] + dy[i-n][j-m];</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+</pre><td class="rouge-code"><pre><span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">701</span><span class="p">][</span><span class="mi">701</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">701</span><span class="p">][</span><span class="mi">701</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">max_num</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8765432</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">h</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+			<span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">h</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="n">j</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">w</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="c1">// 중복되서 빠지는 a[0][0]~a[i-n][j-m] 까지의 영역 한번 더해준다.</span>
+			<span class="n">tmp</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">n</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">m</span><span class="p">]</span> <span class="o">+</span> <span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">n</span><span class="p">][</span><span class="n">j</span><span class="o">-</span><span class="n">m</span><span class="p">];</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">tmp</span> <span class="o">&gt;</span> <span class="n">max_num</span><span class="p">)</span> 
+				<span class="n">max_num</span><span class="o">=</span><span class="n">tmp</span><span class="p">;</span>		
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">max_num</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="수식만들기-문제dfs"><span class="mr-2">수식만들기 문제(DFS)</span><a href="#수식만들기-문제dfs" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+</pre><td class="rouge-code"><pre>
+<span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">a</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">op</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">n</span><span class="p">,</span> <span class="n">maxi</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8765432</span><span class="p">,</span> <span class="n">mini</span> <span class="o">=</span> <span class="mi">8765432</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">DFS</span><span class="p">(</span><span class="kt">int</span> <span class="n">L</span><span class="p">,</span> <span class="kt">int</span> <span class="n">res</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">L</span> <span class="o">==</span> <span class="n">n</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">&gt;</span> <span class="n">maxi</span><span class="p">)</span> 
+			<span class="n">maxi</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">res</span> <span class="o">&lt;</span> <span class="n">mini</span><span class="p">)</span> 
+			<span class="n">mini</span> <span class="o">=</span> <span class="n">res</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">else</span>
+	<span class="p">{</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+			<span class="n">DFS</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">res</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="p">]);</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+			<span class="n">DFS</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">res</span> <span class="o">-</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="p">]);</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">op</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+			<span class="n">DFS</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">res</span> <span class="o">*</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="p">]);</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">op</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">--</span><span class="p">;</span>
+			<span class="n">DFS</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">res</span> <span class="o">/</span> <span class="n">a</span><span class="p">[</span><span class="n">L</span><span class="p">]);</span>
+			<span class="n">op</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">++</span><span class="p">;</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="p">;</span>
+<span class="p">}</span>
+	
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">);</span>
+	<span class="c1">//숫자 입력</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+	<span class="c1">//연산자 가용 횟수 입력(+, - *, /)</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">op</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+	<span class="p">}</span>
+
+	<span class="n">DFS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">maxi</span><span class="p">,</span> <span class="n">mini</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="최대-부분-증가수열lis--longest-increasing-subsequence"><span class="mr-2">최대 부분 증가수열(LIS : Longest Increasing Subsequence)</span><a href="#최대-부분-증가수열lis--longest-increasing-subsequence" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>원소가 n개인 배열의 일부 원소를 골라내서 만든 부분 수열 중, 각 원소가 이전 원소보다 크다는 조건을 만족하고, 그 길이가 최대인 부분 수열을 최장 증가 부분 수열이라고 한다. 이 문제의 경우 각 배열의 포인트마다 최대 부분 증가수열의 원소 갯수를 저장하고 이를 활용하여 문제를 해결한다. (DP 문제)</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="n">ios_base</span><span class="o">::</span><span class="n">sync_with_stdio</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+	<span class="n">freopen</span><span class="p">(</span><span class="s">"input.txt"</span><span class="p">,</span> <span class="s">"rt"</span><span class="p">,</span> <span class="n">stdin</span><span class="p">);</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">res</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="p">;</span>
+	<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">arr</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">dy</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="n">dy</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="kt">int</span> <span class="n">max</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="c1">//arr[i] : 탐색하려는 항, arr[j] 는 arr[i] 앞들의 항 </span>
+			<span class="k">if</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">max</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">max</span> <span class="o">=</span> <span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+		<span class="c1">// 앞의 항 중 최댓값(최대 증가수열)을 찾고 그 값에 +1을 하여 저장한다.</span>
+		<span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+		<span class="c1">//최댓값 탐색</span>
+		<span class="k">if</span><span class="p">(</span><span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">res</span><span class="p">)</span> 
+			<span class="n">res</span><span class="o">=</span><span class="n">dy</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+	<span class="p">}</span>
+	<span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">res</span><span class="p">;</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="냅색-알고리즘knapsack-algorithm"><span class="mr-2">냅색 알고리즘(Knapsack Algorithm)</span><a href="#냅색-알고리즘knapsack-algorithm" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>ex) 가방에 j 무게 만큼 담을 수 있을 때 보석의 최대 가치를 구하는 문제</p><p>=&gt; DP로 문제를 해결</p><p>각 무게의 보석을 넣어가면서 지금 현재 가방 무게별 최대 가치를 업데이트 시켜나간다.</p><p>보석의 개수가 무한할 경우(1차원 배열로 앞에서 부터 탐색)</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">1001</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">;</span><span class="c1">// n: 보석 종류 수, m: 최대 무게,  w : 무게, v 가치</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">v</span><span class="p">);</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">w</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="o">-</span><span class="n">w</span><span class="p">]</span><span class="o">+</span><span class="n">v</span><span class="p">);</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">dy</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="union--find-알고리즘"><span class="mr-2">Union &amp; Find 알고리즘</span><a href="#union--find-알고리즘" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>Disjoint-Set : 공통 원소가 없는 집합을 말함.</p><p>여러 노드 중 두 노드를 선택하여 같은 그래프에 속해 있는 지 확인하는 알고리즘.</p><p>① Find(x) : 원소 𝑥가 속한 부분집합을 찾는다. 보통 𝑥가 속한 부분집합의 대표 원소를 되돌려준다.</p><p>② Union(x, y) : 원소 𝑥가 속한 부분집합과 원소 𝑦가 속한 부 분집합의 합집합을 구한다.</p><ul><li>각 부분집합은 트리로 나타낸다.</ul><p>3) 구현(배열 이용)</p><ul><li>미리 해야할 과정</ul><p>노드의 개수 만큼 배열을 선언한다.</p><p>각 노드의 루트노드를 가르키는 배열을 선언하고, 초기화 한다. (parent배열)</p><p>주어진 조건에 맞게 각 노드의 parent 배열의 값은 그 노드가 가르키는 노드로 바꿔준다.</p><p>ⓐ Find : 루트 노드를 찾는 함수이므로 루트에 도달할 때까지 계속 부모노드를 찾아 올라간다.</p><p>ⓑ Union : 𝑥를 (혹은 𝑦를) 포함하는 부분집합을 나타내는 트리를 다른 것의 부트리로 만들면 된다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre><td class="rouge-code"><pre>
+
+<span class="cp">#include</span><span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;queue&gt;</span><span class="cp">
+#include</span><span class="cpf">&lt;vector&gt;</span><span class="cp">
+</span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="n">unf</span><span class="p">[</span><span class="mi">1001</span><span class="p">];</span>
+
+<span class="kt">int</span> <span class="nf">Find</span><span class="p">(</span><span class="kt">int</span> <span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">v</span> <span class="o">==</span> <span class="n">unf</span><span class="p">[</span><span class="n">v</span><span class="p">])</span> 
+		<span class="k">return</span> <span class="n">v</span><span class="p">;</span>
+	<span class="k">else</span> 
+		<span class="k">return</span> <span class="n">unf</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">unf</span><span class="p">[</span><span class="n">v</span><span class="p">]);</span><span class="c1">//메모이제이션(경로 압축)</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">Union</span><span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">a</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+	<span class="n">b</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">a</span> <span class="o">!=</span> <span class="n">b</span><span class="p">)</span> 
+		<span class="n">unf</span><span class="p">[</span><span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">fa</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">unf</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+		<span class="n">Union</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">);</span>
+	<span class="p">}</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">b</span><span class="p">);</span>
+	<span class="n">fa</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
+	<span class="n">fb</span> <span class="o">=</span> <span class="n">Find</span><span class="p">(</span><span class="n">b</span><span class="p">);</span>
+	<span class="c1">// 같은 집합안에 원소인지 확인(루트노드가 같은지)</span>
+	<span class="k">if</span><span class="p">(</span><span class="n">fa</span> <span class="o">==</span> <span class="n">fb</span><span class="p">)</span> 
+		<span class="n">printf</span><span class="p">(</span><span class="s">"YES</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="k">else</span> 
+		<span class="nf">printf</span><span class="p">(</span><span class="s">"NO</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><p>보석의 개수가 유한할 경우(1차원 배열로 뒤에서부터 탐색) =&gt; 뒤에서부터 탐색할 경우 비교적 무게가 작은 보석을 2번 이상 넣는 경우의 수를 없앨 수 있다.</p><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;algorithm&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">dy</span><span class="p">[</span><span class="mi">100001</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span> <span class="p">};</span>
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">v</span><span class="p">;</span><span class="c1">// n: 보석 종류 수, m: 최대 무게,  w : 무게, v 가치</span>
+	<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">n</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">);</span>
+
+	<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="n">scanf</span><span class="p">(</span><span class="s">"%d %d"</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">w</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">v</span><span class="p">);</span>
+		<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">m</span><span class="p">;</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">w</span><span class="p">;</span> <span class="n">j</span><span class="o">--</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">dy</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">dy</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">w</span><span class="p">]</span> <span class="o">+</span> <span class="n">v</span><span class="p">);</span>
+			
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">dy</span><span class="p">[</span><span class="n">m</span><span class="p">]);</span>
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h2 id="플로이드-와샬-알고리즘"><span class="mr-2">플로이드-와샬 알고리즘</span><a href="#플로이드-와샬-알고리즘" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>각 노드의 개수 * 2 크기의 최단거리 테이블을 만들고 모든 경우의 수를 고려하여 최단거리 테이블을 갱신하며 최단거리를 계산합니다.</p><p>플로이드-와샬 알고리즘의 로직 순서</p><ol><li><p>최단 거리 테이블을 Inf(각 노드의 수 * 거리의 최대값보다 큰 값)로 초기화.</p><li><p>그래프에서 어떠한 정점을 거치지 않고 다른 정점으로 갈 수 있는 경우를 최단 거리 테이블에 입력.</p><li><p>최단거리 테이블에서 자기 자신으로 가는 거리를 0으로 변경.</p><li><p>삼중 for문을 사용하여 각 k번째 노드를 거쳐서 한 정점에서 다른 정점으로 갈 수 있는 모든 경우의 수를 고려하여 최단거리 테이블 갱신.</p></ol><div class="language-cpp highlighter-rouge"><div class="code-header"> <span data-label-text="Cpp"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre><td class="rouge-code"><pre><span class="cp">#include</span> <span class="cpf">&lt;cstdio&gt;</span><span class="cp">
+#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp">
+</span><span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(){</span>
+	<span class="kt">int</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">;</span>
+
+	<span class="n">cin</span><span class="o">&gt;&gt;</span><span class="n">n</span><span class="o">&gt;&gt;</span><span class="n">m</span><span class="p">;</span>
+
+	<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="o">&gt;</span> <span class="n">dis</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5000</span><span class="p">));</span>
+
+	
+	
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">m</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+		<span class="n">cin</span><span class="o">&gt;&gt;</span> <span class="n">a</span> <span class="o">&gt;&gt;</span> <span class="n">b</span> <span class="o">&gt;&gt;</span> <span class="n">c</span><span class="p">;</span>
+		<span class="n">dis</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span><span class="o">=</span><span class="n">c</span><span class="p">;</span>	
+	<span class="p">}</span>
+
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> 
+	<span class="p">{</span>
+		<span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+	<span class="p">}</span>
+	<span class="c1">// i 출발지, k 중간 경유지, j 도착지</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="k">if</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dis</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+				<span class="p">{</span>
+					<span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">dis</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+				<span class="p">}</span>
+			<span class="p">}</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+	<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+	<span class="p">{</span>
+		<span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span>
+		<span class="p">{</span>
+			<span class="c1">//도달할 수 없는 정점의 경우</span>
+			<span class="k">if</span><span class="p">(</span><span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="mi">5000</span><span class="p">)</span>
+			<span class="p">{</span>
+				<span class="n">cout</span><span class="o">&lt;&lt;</span><span class="s">"M "</span><span class="p">;</span>
+			<span class="p">}</span>
+			<span class="k">else</span> <span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="n">dis</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">&lt;&lt;</span><span class="s">" "</span><span class="p">;</span>
+		<span class="p">}</span>
+		<span class="n">cout</span><span class="o">&lt;&lt;</span> <span class="sc">'\n'</span><span class="p">;</span>
+	<span class="p">}</span>
+
+	<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></table></code></div></div></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/codingtest/'>CodingTest</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/codingtest/" class="post-tag no-text-decoration" >CodingTest</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> 이 기사는 저작권자의 <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> 라이센스를 따릅니다.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">공유하기</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EC%A4%91%EA%B3%A0%EA%B8%89%EB%AC%B8%EB%B2%95+-+DK%27s+Software+Engineering+Knowledge+Storage&url=%2Fposts%2F%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598-%25EC%25A0%2595%25EB%25A6%25AC%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EC%A4%91%EA%B3%A0%EA%B8%89%EB%AC%B8%EB%B2%95+-+DK%27s+Software+Engineering+Knowledge+Storage&u=%2Fposts%2F%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598-%25EC%25A0%2595%25EB%25A6%25AC%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://t.me/share/url?url=%2Fposts%2F%25EC%2595%258C%25EA%25B3%25A0%25EB%25A6%25AC%25EC%25A6%2598-%25EC%25A0%2595%25EB%25A6%25AC%2F&text=%ED%8C%8C%EC%9D%B4%EC%8D%AC+%EC%A4%91%EA%B3%A0%EA%B8%89%EB%AC%B8%EB%B2%95+-+DK%27s+Software+Engineering+Knowledge+Storage" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="링크 복사하기" data-title-succeed="링크가 복사되었습니다!"> </i> </span></div></div></div><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">최근 업데이트</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/Algorithm_Hash/">Algorithm_Hash</a><li><a href="/posts/Algorithm_Floyd-Warshall/">Algorithm_Floyd Warshall</a><li><a href="/posts/%EA%B2%BD%EB%A1%9C-%EC%B0%BE%EA%B8%B0/">경로 찾기</a><li><a href="/posts/Algorithm_Dijkstra/">Algorithm_Dijkstra</a><li><a href="/posts/%EC%83%9D%EB%AA%85%EC%B2%B4-%EB%B6%84%EB%A5%98/">생명체 분류</a></ul></div><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/codingtest/">CodingTest</a> <a class="post-tag" href="/tags/bfs/">BFS</a> <a class="post-tag" href="/tags/simulation/">simulation</a> <a class="post-tag" href="/tags/dp/">DP</a> <a class="post-tag" href="/tags/dfs/">DFS</a> <a class="post-tag" href="/tags/embedded-engineering/">Embedded Engineering</a> <a class="post-tag" href="/tags/algorithm/">Algorithm</a> <a class="post-tag" href="/tags/stl/">STL</a> <a class="post-tag" href="/tags/container/">Container</a> <a class="post-tag" href="/tags/dijkstra/">Dijkstra</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">바로가기</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>관련된 글</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/%EC%83%81%ED%95%9C-%EA%B7%A4/"><div class="card-body"> <em class="small" data-ts="1693148400" data-df="YYYY-MM-DD" > 2023-08-28 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>상한 귤</h3><div class="text-muted small"><p> 상한 귤 숫자 0, 1, 2로만 이루어진 n * n 격자에서 0초에 k개의 상한 귤로부터 시작하여 1초에 한 번씩 모든 상한 귤로부터 인접한 곳에 있는 귤이 동시에 전부 상하게 될때, 각 귤마다 최초로 상하게 되는 시간을 구하는 프로그램을 작성해보세요. 숫자 0은 해당 칸에 아무것도 놓여있지 않음을, 숫자 1은 해당 칸에 귤이 놓여있음을, 숫자 2는 ...</p></div></div></a></div><div class="card"> <a href="/posts/%EB%B9%84%EB%A5%BC-%ED%94%BC%ED%95%98%EA%B8%B0/"><div class="card-body"> <em class="small" data-ts="1693321200" data-df="YYYY-MM-DD" > 2023-08-30 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>비를 피하기</h3><div class="text-muted small"><p> 비를 피하기 숫자 0, 1, 2, 3로만 이루어진 n * n 격자에서 사람이 h명 겹치지 않게 서 있고, 비를 피할 수 있는 공간의 위치 m개가 주어졌을 때 각 사람마다 비를 피할 수 있는 가장 가까운 공간까지의 거리를 구하는 프로그램을 작성해보세요. 숫자 0은 해당 칸이 이동할 수 있는 곳임을, 숫자 1은 벽이 있어 해당 칸이 이동할 수 없는 곳임...</p></div></div></a></div><div class="card"> <a href="/posts/%EC%A0%95%EC%88%98-%EC%82%AC%EA%B0%81%ED%98%95-%EC%B5%9C%EB%8C%80-%ED%95%A9/"><div class="card-body"> <em class="small" data-ts="1693666800" data-df="YYYY-MM-DD" > 2023-09-03 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>정수 사각형 최대 합</h3><div class="text-muted small"><p> 정수 사각형 최대 합 N×N 행렬이 주어졌을 때, (1,1)에서 시작하여 오른쪽 혹은 밑으로만 이동하여 (N,N)으로 간다고 했을 때 거쳐간 위치에 적혀있는 숫자의 합을 최대로 하는 프로그램을 작성해보세요. 첫째 줄에는 N이 주어집니다. 두 번째 줄 부터 N개의 줄에 각각 각 행에 해당하는 N개의 정수 값이 공백을 사이에 두고 주어집니다. 1≤...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/%ED%8C%8C%EC%9D%B4%EC%8D%AC-%EC%A4%91%EA%B3%A0%EA%B8%89%EB%AC%B8%EB%B2%95-%EA%B0%95%EC%9D%98-%EC%A0%95%EB%A6%AC/" class="btn btn-outline-primary" prompt="이전 글"><p>파이썬 중고급문법</p></a> <a href="/posts/Embedded-C-%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/" class="btn btn-outline-primary" prompt="다음 글"><p>Embedded C 디자인 패턴</p></a></div></div></div><footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0"><div class="footer-left"><p class="mb-0"> © 2026 <a href="https://twitter.com/username">DK</a>. <span data-toggle="tooltip" data-placement="top" title="명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의 Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.">일부 권리 보유</span></p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/codingtest/">CodingTest</a> <a class="post-tag" href="/tags/bfs/">BFS</a> <a class="post-tag" href="/tags/simulation/">simulation</a> <a class="post-tag" href="/tags/dp/">DP</a> <a class="post-tag" href="/tags/dfs/">DFS</a> <a class="post-tag" href="/tags/embedded-engineering/">Embedded Engineering</a> <a class="post-tag" href="/tags/algorithm/">Algorithm</a> <a class="post-tag" href="/tags/stl/">STL</a> <a class="post-tag" href="/tags/container/">Container</a> <a class="post-tag" href="/tags/dijkstra/">Dijkstra</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">새 버전의 콘텐츠를 사용할 수 있습니다.</p><button type="button" class="btn btn-primary" aria-label="Update"> 업데이트 </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">검색 결과가 없습니다.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/ko.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script>
