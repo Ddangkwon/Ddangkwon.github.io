@@ -318,45 +318,234 @@ int main() {
 }
 ```
 
----
 
-## 커스텀 키: struct를 키로 쓰는 방법
+# unordered_map STL API 정리
 
-키 비교를 위한 equality와 해시를 같이 제공해야 한다.
+unordered_map에서 가장 많이 쓰는 API(Application Programming Interface)를 코테 관점으로 정리했다.  
+아래 표의 복잡도는 평균 기준이며, 충돌이 극단적이면 최악 O(N)이 될 수 있다.
 
-```cpp
+## 1) 생성, 상태 확인
+
+| API | 의미 | 평균 복잡도 |
+| --- | --- | --- |
+| **unordered_map<K,V> m;** | 기본 생성이다. | - |
+| **m.empty()** | 비어있는지 확인한다. | O(1) |
+| **m.size()** | 원소 개수를 반환한다. | O(1) |
+| **m.clear()** | 전부 삭제한다. | O(N) |
+
+### 생성 예시
+
+~~~cpp
 #include <iostream>
 #include <unordered_map>
+#include <string>
 
 using namespace std;
 
-struct Node {
-    int y;
-    int x;
-};
-
-struct NodeHash {
-    size_t operator()(const Node& n) const {
-        return (size_t)n.y * 1000003u + (size_t)n.x;
-    }
-};
-
-struct NodeEq {
-    bool operator()(const Node& a, const Node& b) const {
-        return a.y == b.y && a.x == b.x;
-    }
-};
-
 int main() {
-    unordered_map<Node, int, NodeHash, NodeEq> dist;
+    unordered_map<string, int> m;           // 기본 생성
+    unordered_map<string, int> m2 = m;      // 복사
+    unordered_map<string, int> m3(move(m2)); // 이동
 
-    dist[{2, 3}] = 7;
-    dist[{2, 4}] = 9;
-
-    cout << dist[{2, 3}] << "\n";
+    cout << m3.empty() << "\n";
+    cout << m3.size() << "\n";
     return 0;
 }
-```
+~~~
 
 ---
 
+## 2) 조회 API
+
+| API | 의미 | 특징 |
+| --- | --- | --- |
+| **m.find(key)** | key를 찾는다. | 없으면 end를 반환한다. |
+| **m.count(key)** | key 존재 여부를 0 또는 1로 반환한다. | unordered_map은 키 중복이 없어서 0 또는 1이다. |
+| **m.contains(key)** | key 존재 여부를 bool로 반환한다. | C++20부터 지원이다. |
+| **m.at(key)** | key에 대응하는 값을 반환한다. | 없으면 예외가 발생한다. |
+| **m[key]** | key에 대응하는 값을 참조로 반환한다. | 없으면 기본값 원소가 생성된다. |
+
+### find, count 예시
+
+~~~cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+    m["a"] = 10;
+
+    auto it = m.find("a");
+    if (it != m.end()) cout << it->second << "\n";
+
+    cout << m.count("a") << "\n";  // 1
+    cout << m.count("b") << "\n";  // 0
+    return 0;
+}
+~~~
+
+### at vs operator[] 차이 예시
+
+~~~cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+    m["a"] = 10;
+
+    // at는 없으면 예외가 난다
+    try {
+        cout << m.at("b") << "\n";
+    } catch (...) {
+        cout << "at: not found\n";
+    }
+
+    // operator[]는 없으면 원소를 만든다
+    cout << m["b"] << "\n";     // 0 출력, 동시에 b가 생성된다
+    cout << m.size() << "\n";   // 2
+    return 0;
+}
+~~~
+
+---
+
+## 3) 삽입 API
+
+| API | 의미 | 특징 |
+| --- | --- | --- |
+| **m.insert({k,v})** | (k,v) 삽입을 시도한다. | 이미 있으면 삽입되지 않는다. |
+| **m.emplace(k,v)** | (k,v) 삽입을 시도한다. | 불필요한 복사를 줄이는 편이다. |
+| **m.try_emplace(k, args...)** | 키가 없을 때만 value를 생성해 삽입한다. | value 생성 비용이 큰 경우 유리하다. |
+| **m.insert_or_assign(k, v)** | 있으면 덮어쓰고 없으면 삽입한다. | 업데이트 패턴에 편하다. |
+
+### insert의 반환값 활용
+
+insert는 pair<iterator, bool>을 반환한다. bool은 실제 삽입 성공 여부이다.
+
+~~~cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+
+    auto r1 = m.insert({"a", 10});
+    cout << r1.second << "\n"; // 1
+
+    auto r2 = m.insert({"a", 20});
+    cout << r2.second << "\n"; // 0, 이미 존재해서 실패
+
+    cout << m["a"] << "\n";    // 10
+    return 0;
+}
+~~~
+
+### insert_or_assign 예시
+
+~~~cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+
+    m.insert_or_assign("a", 10);
+    m.insert_or_assign("a", 30);
+
+    cout << m["a"] << "\n"; // 30
+    return 0;
+}
+~~~
+
+---
+
+## 4) 삭제 API
+
+| API | 의미 | 특징 |
+| --- | --- | --- |
+| **m.erase(key)** | key를 삭제한다. | 삭제된 개수(0 또는 1)를 반환한다. |
+| **m.erase(it)** | iterator 위치 원소를 삭제한다. | 반복 중 삭제에 유리하다. |
+
+### 반복 중 삭제 패턴
+
+~~~cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+    m["a"] = 1;
+    m["b"] = 2;
+    m["c"] = 3;
+
+    for (auto it = m.begin(); it != m.end(); ) {
+        if (it->second % 2 == 1) it = m.erase(it); // 홀수 제거
+        else ++it;
+    }
+
+    cout << m.size() << "\n";
+    return 0;
+}
+~~~
+
+---
+
+## 5) 순회 API
+
+| API | 의미 |
+| --- | --- |
+| **m.begin(), m.end()** | iterator로 전체 순회한다. |
+| **m.cbegin(), m.cend()** | const iterator로 순회한다. |
+| **range based for** | 전체 순회한다. |
+
+unordered_map은 정렬된 순서를 보장하지 않는다. 출력 순서가 실행마다 달라질 수 있다.
+
+~~~cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+    m["apple"] = 3;
+    m["banana"] = 5;
+
+    for (auto& kv : m) {
+        cout << kv.first << " " << kv.second << "\n";
+    }
+    return 0;
+}
+~~~
+
+---
+
+## 6) 버킷, 로드 팩터 관련 API
+
+hash 성능은 충돌과 관련이 있고, 충돌은 로드 팩터와 버킷 수에 영향을 받는다.
+
+| API | 의미 |
+| --- | --- |
+| **m.bucket_count()** | 버킷 개수를 반환한다. |
+| **m.bucket(key)** | key가 들어갈 버킷 번호를 반환한다. |
+| **m.load_factor()** | 현재 로드 팩터를 반환한다. |
+| **m.max_load_factor(x)** | 최대 로드 팩터를 설정한다. |
+| **m.rehash(b)** | 최소 b개의 버킷을 확보하도록 재해시한다. |
+| **m.reserve(n)** | n개 원소를 넣어도 재해시가 덜 나게 버킷을 준비한다. |
