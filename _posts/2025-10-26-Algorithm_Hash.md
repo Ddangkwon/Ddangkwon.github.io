@@ -173,3 +173,190 @@ cout << color["apple"];
 
 Hash의 원리를 이해하고 직접 구현해보면,  
 unordered_map의 내부 구조를 쉽게 이해할 수 있다.
+
+
+# C++ unordered_map 활용
+
+C++에서는 직접 Hash Table을 구현하기보다 unordered_map을 많이 사용한다.  
+평균적으로 탐색, 삽입, 삭제가 **O(1)** 이지만, 해시 충돌이 극단적으로 많으면 최악 **O(N)** 이 될 수 있다.
+
+---
+
+## 기본 예시
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, string> color;
+
+    color["apple"] = "red";
+    color["banana"] = "yellow";
+
+    cout << color["apple"] << "\n";
+    return 0;
+}
+```
+
+---
+
+## 자주 나오는 실수 1: operator[]가 원소를 만든다
+
+operator[]는 키가 없으면 기본값으로 새 원소를 생성한다.  
+존재 여부만 확인하고 싶으면 find를 쓰는 편이 안전하다.
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <string>
+
+using namespace std;
+
+int main() {
+    unordered_map<string, int> m;
+
+    // 여기서 "ghost" 키가 없는데도 생성되고 값 0이 들어간다
+    cout << m["ghost"] << "\n";
+
+    // 존재 여부 확인은 find가 더 안전하다
+    if (m.find("ghost2") == m.end()) {
+        cout << "ghost2 not found\n";
+    }
+
+    return 0;
+}
+```
+
+---
+
+## 빈도 카운팅 패턴 (코테 최다 출현)
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    vector<int> a = {1, 3, 3, 7, 1, 3};
+
+    unordered_map<int, int> cnt;
+    for (int x : a) cnt[x]++;
+
+    cout << "count(1) = " << cnt[1] << "\n";
+    cout << "count(3) = " << cnt[3] << "\n";
+    cout << "count(7) = " << cnt[7] << "\n";
+    return 0;
+}
+```
+
+---
+
+## 성능 팁: reserve와 max_load_factor
+
+데이터가 많아지면 rehash가 반복되면서 시간 비용이 커질 수 있다.  
+대략 원소 개수를 예측할 수 있으면 reserve로 미리 버킷을 준비하는 편이 유리하다.
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+int main() {
+    unordered_map<int, int> m;
+
+    // 대략 200000개쯤 들어갈 예정이라면 미리 예약한다
+    m.reserve(200000);
+
+    // 충돌을 더 줄이고 싶다면 로드 팩터도 낮출 수 있다
+    m.max_load_factor(0.7f);
+
+    for (int i = 0; i < 200000; i++) m[i] = i;
+
+    cout << m[199999] << "\n";
+    return 0;
+}
+```
+
+---
+
+## 커스텀 키: pair를 키로 쓰는 방법
+
+unordered_map은 기본적으로 pair에 대한 해시가 없다.  
+pair<int,int> 같은 키를 쓰려면 해시 함수를 직접 제공해야 한다.
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+struct PairHash {
+    size_t operator()(const pair<int, int>& p) const {
+        // 흔히 쓰는 결합 방식 중 하나이다
+        // (충돌을 완전히 막는 것은 아니고 분산을 좋게 만들기 위함이다)
+        size_t h1 = (size_t)p.first;
+        size_t h2 = (size_t)p.second;
+        return h1 * 1315423911u + h2;
+    }
+};
+
+int main() {
+    unordered_map<pair<int, int>, int, PairHash> mp;
+
+    mp[{1, 2}] = 10;
+    mp[{3, 4}] = 20;
+
+    cout << mp[{1, 2}] << "\n";
+    return 0;
+}
+```
+
+---
+
+## 커스텀 키: struct를 키로 쓰는 방법
+
+키 비교를 위한 equality와 해시를 같이 제공해야 한다.
+
+```cpp
+#include <iostream>
+#include <unordered_map>
+
+using namespace std;
+
+struct Node {
+    int y;
+    int x;
+};
+
+struct NodeHash {
+    size_t operator()(const Node& n) const {
+        return (size_t)n.y * 1000003u + (size_t)n.x;
+    }
+};
+
+struct NodeEq {
+    bool operator()(const Node& a, const Node& b) const {
+        return a.y == b.y && a.x == b.x;
+    }
+};
+
+int main() {
+    unordered_map<Node, int, NodeHash, NodeEq> dist;
+
+    dist[{2, 3}] = 7;
+    dist[{2, 4}] = 9;
+
+    cout << dist[{2, 3}] << "\n";
+    return 0;
+}
+```
+
+---
+
