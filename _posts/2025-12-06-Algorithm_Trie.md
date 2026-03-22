@@ -2,7 +2,7 @@
 layout : post
 title : Algorithm_Trie
 comments : true
-categories : 
+categories :
 - CodingTest
 tags : [CodingTest, Trie]
 ---
@@ -11,14 +11,14 @@ tags : [CodingTest, Trie]
 
 ## 1. Trie 개요
 
-Trie(트라이)는 문자열 집합을 다루기 위한 트리 기반 자료구조이다.  
+Trie(트라이)는 문자열 집합을 다루기 위한 트리 기반 자료구조이다.
 특히 다음과 같은 상황에서 유용하다.
 
 - 많은 문자열을 저장하고 **정확히 존재 여부를 빠르게 검사**해야 할 때
 - 어떤 문자열이 **특정 접두사(prefix)** 를 가지는지 자주 물어볼 때
 - 자동완성(auto-complete), 사전(dictionary), 검색어 추천과 같이 **접두사 기반 검색**이 핵심일 때
 
-Trie의 핵심 아이디어는 문자열을 통째로 노드에 저장하지 않고,  
+Trie의 핵심 아이디어는 문자열을 통째로 노드에 저장하지 않고,
 문자 하나하나를 **간선(edge)** 로 두고 루트에서부터 한 글자씩 내려가며 표현하는 것이다.
 
 
@@ -38,8 +38,8 @@ Trie는 보통 다음과 같은 정보를 가진다.
 - app
 - bat
 
-루트에서 시작해 a → p → p → l → e 와 같은 경로로 **apple** 을,  
-a → p → p 지점에서 **app** 의 끝을 표시하고,  
+루트에서 시작해 a → p → p → l → e 와 같은 경로로 **apple** 을,
+a → p → p 지점에서 **app** 의 끝을 표시하고,
 b → a → t 경로로 **bat** 를 표현한다.
 
 
@@ -79,7 +79,7 @@ b → a → t 경로로 **bat** 를 표현한다.
   - 삽입: O(L)
   - 검색: O(L)
   - 접두사 검사: O(L)
-- 일반적인 해시 기반 자료구조는 평균 O(1)처럼 보이지만, 문자열 길이에 비례하는 해시 계산이 필요하므로 사실상 O(L)이다.  
+- 일반적인 해시 기반 자료구조는 평균 O(1)처럼 보이지만, 문자열 길이에 비례하는 해시 계산이 필요하므로 사실상 O(L)이다.
   Trie의 강점은 **충돌이 없고, 접두사 처리에 특화**되어 있다는 점이다.
 
 공간 복잡도는 다음에 의존한다.
@@ -88,8 +88,8 @@ b → a → t 경로로 **bat** 를 표현한다.
 - 각 문자열의 길이 L
 - 사용 문자 집합의 크기(알파벳 수)
 
-최악의 경우 O(N × L)의 노드가 필요할 수 있다.  
-문자 집합이 알파벳 소문자 26개로 제한되면 각 노드마다 자식 포인터 26개를 고정 배열로 둘 수 있다.  
+최악의 경우 O(N × L)의 노드가 필요할 수 있다.
+문자 집합이 알파벳 소문자 26개로 제한되면 각 노드마다 자식 포인터 26개를 고정 배열로 둘 수 있다.
 문자 집합이 크거나 유니코드 등을 다루면 map 또는 unordered_map을 쓰는 편이 공간 면에서 유리하다.
 
 
@@ -128,88 +128,87 @@ b → a → t 경로로 **bat** 를 표현한다.
 
 ```cpp
 #include <iostream>
+#include <vector>
 #include <string>
+
 using namespace std;
 
-struct TrieNode {
-    TrieNode* child[26];
-    bool is_end;
+typedef struct {
+    int is_end;
+    int child[26];
+} trie_node_t;
 
-    TrieNode() {
-        for (int i = 0; i < 26; i++) {
-            child[i] = nullptr;
+vector<trie_node_t> buf;
+int buf_cnt = 0;
+
+void init_trie()
+{
+    buf.clear();
+    buf_cnt = 0;
+    buf.push_back({0}); // root = 0, child 전부 0으로 초기화된다
+}
+
+void insert_str(const string& s)
+{
+    int cur = 0;
+    for (char c : s) {
+        int idx = c - 'a';
+        if (idx < 0 || idx >= 26)
+            continue;
+
+        if (buf[cur].child[idx] == 0) {
+            buf.push_back({0});
+            buf[cur].child[idx] = ++buf_cnt; // 새 노드 인덱스
         }
-        is_end = false;
+        cur = buf[cur].child[idx];
     }
-};
+    buf[cur].is_end = 1;
+}
 
-struct Trie {
-    TrieNode* root;
+int search_str(const string& s)
+{
+    int cur = 0;
+    for (char c : s) {
+        int idx = c - 'a';
+        if (idx < 0 || idx >= 26)
+            return 0;
 
-    Trie() {
-        root = new TrieNode();
+        if (buf[cur].child[idx] == 0)
+            return 0;
+        cur = buf[cur].child[idx];
     }
+    return buf[cur].is_end;
+}
 
-    void insert(const string& s) {
-        TrieNode* node = root;
-        for (char c : s) {
-            int idx = c - 'a';
-            if (idx < 0 || idx >= 26) {
-                continue;
-            }
-            if (node->child[idx] == nullptr) {
-                node->child[idx] = new TrieNode();
-            }
-            node = node->child[idx];
-        }
-        node->is_end = true;
+int starts_with(const string& prefix)
+{
+    int cur = 0;
+    for (char c : prefix) {
+        int idx = c - 'a';
+        if (idx < 0 || idx >= 26) return 0;
+
+        if (buf[cur].child[idx] == 0) return 0;
+        cur = buf[cur].child[idx];
     }
+    return 1;
+}
 
-    bool search(const string& s) {
-        TrieNode* node = root;
-        for (char c : s) {
-            int idx = c - 'a';
-            if (idx < 0 || idx >= 26) {
-                return false;
-            }
-            if (node->child[idx] == nullptr) {
-                return false;
-            }
-            node = node->child[idx];
-        }
-        return node->is_end;
-    }
-
-    bool starts_with(const string& prefix) {
-        TrieNode* node = root;
-        for (char c : prefix) {
-            int idx = c - 'a';
-            if (idx < 0 || idx >= 26) {
-                return false;
-            }
-            if (node->child[idx] == nullptr) {
-                return false;
-            }
-            node = node->child[idx];
-        }
-        return true;
-    }
-};
-
-int main() {
+int main(void)
+{
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    Trie trie;
+    init_trie();
 
-    trie.insert("apple");
-    trie.insert("app");
+    insert_str("apple");
+    insert_str("app");
 
-    cout << trie.search("apple") << " ";     
-    cout << trie.search("app") << " ";       
-    cout << trie.search("ap") << " ";        
-    cout << trie.starts_with("ap") << " ";   
-    cout << trie.starts_with("b") << " ";    
+    cout << search_str("apple") << " ";
+    cout << search_str("app") << " ";
+    cout << search_str("ap") << " ";
+    cout << starts_with("ap") << " ";
+    cout << starts_with("b") << " ";
 
     return 0;
 }
@@ -220,77 +219,86 @@ int main() {
 
 ```cpp
 #include <iostream>
+#include <vector>
 #include <string>
 #include <unordered_map>
+
 using namespace std;
 
-struct TrieNode {
-    unordered_map<char, TrieNode*> child;
-    bool is_end;
+typedef struct {
+    unordered_map<char, int> child; // char -> next index
+    int is_end;
+} trie_node_t;
 
-    TrieNode() {
-        is_end = false;
-    }
-};
+vector<trie_node_t> buf;
+int buf_cnt = 0;
 
-struct Trie {
-    TrieNode* root;
+void init_trie()
+{
+    buf.clear();
+    buf_cnt = 0;
+    buf.push_back({ 0 });   // root
+    buf[0].is_end = 0;
+}
 
-    Trie() {
-        root = new TrieNode();
-    }
-
-    void insert(const string& s) {
-        TrieNode* node = root;
-        for (char c : s) {
-            if (node->child.find(c) == node->child.end()) {
-                node->child[c] = new TrieNode();
-            }
-            node = node->child[c];
+void insert_str(const string& s)
+{
+    int cur = 0;
+    for (char c : s) {
+        auto it = buf[cur].child.find(c);
+        if (it == buf[cur].child.end()) {
+            buf.push_back({ 0 });
+            buf[++buf_cnt].is_end = 0;
+            buf[cur].child[c] = buf_cnt;
+            cur = buf_cnt;
+        } else {
+            cur = it->second;
         }
-        node->is_end = true;
     }
+    buf[cur].is_end = 1;
+}
 
-    bool search(const string& s) {
-        TrieNode* node = root;
-        for (char c : s) {
-            auto it = node->child.find(c);
-            if (it == node->child.end()) {
-                return false;
-            }
-            node = it->second;
-        }
-        return node->is_end;
+int search_str(const string& s)
+{
+    int cur = 0;
+    for (char c : s) {
+        auto it = buf[cur].child.find(c);
+        if (it == buf[cur].child.end())
+            return 0;
+        cur = it->second;
     }
+    return buf[cur].is_end;
+}
 
-    bool starts_with(const string& prefix) {
-        TrieNode* node = root;
-        for (char c : prefix) {
-            auto it = node->child.find(c);
-            if (it == node->child.end()) {
-                return false;
-            }
-            node = it->second;
-        }
-        return true;
+int starts_with(const string& prefix)
+{
+    int cur = 0;
+    for (char c : prefix) {
+        auto it = buf[cur].child.find(c);
+        if (it == buf[cur].child.end())
+            return 0;
+        cur = it->second;
     }
-};
+    return 1;
+}
 
-int main() {
+int main(void)
+{
     ios::sync_with_stdio(false);
-    cin.tie(nullptr);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    Trie trie;
+    init_trie();
 
-    trie.insert("Hello");
-    trie.insert("Hell");
-    trie.insert("Heap");
+    insert_str("Hello");
+    insert_str("Hell");
+    insert_str("Heap");
 
-    cout << trie.search("Hello") << " ";     
-    cout << trie.search("Hell") << " ";      
-    cout << trie.search("He") << " ";        
-    cout << trie.starts_with("He") << " ";   
-    cout << trie.starts_with("Hi") << " ";   
+    cout << search_str("Hello") << " ";
+    cout << search_str("Hell") << " ";
+    cout << search_str("He") << " ";
+    cout << starts_with("He") << " ";
+    cout << starts_with("Hi") << " ";
 
     return 0;
 }
@@ -299,45 +307,45 @@ int main() {
 
 ## 8. Trie의 대표적인 응용
 
-1. **자동완성 기능**  
+1. **자동완성 기능**
    - 사용자가 몇 글자만 입력해도 해당 접두사로 시작하는 단어들을 빠르게 찾을 수 있다.
    - 각 노드에 서브트리 단어수를 저장하면, 인기 검색어 순위 같은 것도 쉽게 계산할 수 있다.
 
-2. **사전(Dictionary) 구현**  
+2. **사전(Dictionary) 구현**
    - 단어 존재 여부를 빠르게 검사할 수 있다.
    - 단어 추가, 삭제, 접두사 기반 탐색 등에 유리하다.
 
-3. **문자열 집합 문제**  
+3. **문자열 집합 문제**
    - 예: N개의 문자열이 주어지고, M개의 쿼리 문자열 각각이 집합에 속하는지 확인하는 문제
    - 해시 대신 Trie를 쓰면 접두사 기반 추가 기능을 자연스럽게 붙일 수 있다.
 
-4. **공통 접두사 관련 문제**  
+4. **공통 접두사 관련 문제**
    - 여러 문자열의 **최장 공통 접두사**를 구하는 문제 등에서 Trie를 사용할 수 있다.
 
-5. **IP 주소, 도메인 이름 관리 등**  
+5. **IP 주소, 도메인 이름 관리 등**
    - 문자열 또는 특정 포맷의 토큰 시퀀스를 관리할 때 활용할 수 있다.
 
 
 ## 9. 구현 시 자주 하는 실수 정리
 
-1. **인덱스 범위 체크 누락**  
+1. **인덱스 범위 체크 누락**
    - 알파벳 소문자만 다루는 경우, 반드시 문자에서 'a'를 빼서 0~25 범위인지 확인해야 한다.
 
-2. **동적 할당한 노드 해제 누락**  
+2. **동적 할당한 노드 해제 누락**
    - 온라인 저지는 대개 프로그램 종료 시 메모리를 회수하지만, 실제 서비스 코드라면 소멸자에서 노드를 모두 해제해야 한다.
 
-3. **문자 집합을 과소 또는 과대 가정**  
+3. **문자 집합을 과소 또는 과대 가정**
    - 실제 입력 문자열이 소문자만 온다는 보장이 없는 경우, 배열 기반 구현은 오류를 낸다.
    - 반대로, 문자 집합이 극도로 제한적이라면 굳이 map을 쓸 필요가 없다.
 
-4. **접두사와 완전 일치 검색을 혼동**  
+4. **접두사와 완전 일치 검색을 혼동**
    - search 연산에서는 마지막 노드의 is_end를 반드시 체크해야 한다.
    - starts_with 연산은 is_end를 확인하지 않고, 경로가 존재하는지만 보면 된다.
 
 
 ## 10. 마무리
 
-Trie는 문자열에 특화된 강력한 자료구조이다.  
-특히 접두사 기반 연산이 잦은 문제에서는 해시나 정렬 기반 탐색보다 자연스럽고 직관적인 해결책을 제공한다.  
-대신, 문자열 수와 길이가 매우 크면 메모리 사용량이 부담될 수 있으므로,  
+Trie는 문자열에 특화된 강력한 자료구조이다.
+특히 접두사 기반 연산이 잦은 문제에서는 해시나 정렬 기반 탐색보다 자연스럽고 직관적인 해결책을 제공한다.
+대신, 문자열 수와 길이가 매우 크면 메모리 사용량이 부담될 수 있으므로,
 입력 스펙에 따라 Trie, 해시, 정렬+이분 탐색 등을 적절히 선택하는 것이 중요하다.
